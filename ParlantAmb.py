@@ -27,10 +27,10 @@ st.set_page_config(page_title="Hablando con Salma y los secretos del Antiguo Egi
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'mcarme','grupoclase','ILAN']
+l1 = ['xdominguez', 'mcarme','grupoclase','ILAN','ilan','CHLOE','chloe']
 
-l2 = ['ILAN']
-l3 = ['dajil','aessalhi','sghanem']
+l2 = ['ILAN','ilan']
+l3 = ['CHLOE','chloe']
 l4 = ['fali','ifatima','mmuhammad','hrabani','sasghar','maslam','hmir','hnoor','krani']
 l5 = ['efreitas','aessalhi','ifatima','hrabani','vtrinidad','azeaaj','sasghar','maslam','sghanem','hmir']
 
@@ -63,7 +63,7 @@ def disable():
     if nom in l2:
         especials = "Summarize the answer to 2 lines as if it were being read by an 5 year old child.Give the answer in capital letters."
     if nom in l3:
-        especials3 = "Repeat the same answer in arab too.Answer just about history.Add at the end of your answer that the information should be checked with the teacher"
+        especials3 = "Give the answer in linked letters"
     if nom in l4:
         especials4 = "Repeat the same answer in urdu too.Answer just about history.Add at the end of your answer that the information should be checked with the teacher"
 
