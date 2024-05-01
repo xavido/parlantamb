@@ -150,9 +150,17 @@ if st.session_state.start_chat:
             with st.chat_message("assistant"):
                 resposta = message.content[0].text.value
                 st.markdown(message.content[0].text.value)
-                if (resposta.find('sociedad')):
-                    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
-                
+                response = client.images.generate(
+                    model="dall-e-3",
+                    prompt="Haz una imagen realista que represente este texto:" + resposta,
+                    size="1024x1024",
+                    quality="standard",
+                    n=1
+                )
+                st.image(response.data[0].url, caption=prompt)
+                #if (resposta.find('sociedad')):
+                #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+
 
 # Crea una conexión con la base de datos
         conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
