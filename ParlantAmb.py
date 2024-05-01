@@ -59,7 +59,7 @@ def disable():
         st.session_state.thread_id = thread.id
     else:
         if nom != '':
-            st.sidebar.write(":red[Aquest usuari no existeix]")
+            st.sidebar.write(":red[Este usuario no existe]")
     if nom in l2:
         especials = "Summarize the answer to 2 lines as if it were being read by an 5 year old child.Give the answer in capital letters."
     if nom in l3:
