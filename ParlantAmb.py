@@ -86,7 +86,7 @@ with st.sidebar.form("usuari_form"):
   if nom in l2:
       especials = "Summarize the answer to 2 lines as if it were being read by an 5 year old child.Give the answer in capital letters."
   if nom in l3:
-      especials3 = "Repeat the same answer in arab too.Answer just about history"
+      especials3 = "Give the answer in linked letters"
   if nom in l4:
       especials4 = "Repeat the same answer in urdu too.Answer just about history"
 
