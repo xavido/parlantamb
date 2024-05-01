@@ -171,7 +171,7 @@ if st.session_state.start_chat:
         cur.close()
         conn.close()
 
-        if nom in l5:
+        if nom in l1:
             response = ''
             response = client.audio.speech.create(
                 model="tts-1",
