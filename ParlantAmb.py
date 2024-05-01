@@ -101,7 +101,7 @@ with st.sidebar.form("usuari_form"):
 st.title("Hablando con...Salma")
 st.write("Soy egiptóloga e investigo los secretos del Antiguo Egipto.")
 
-st.sidebar.button("Sortir Xat",on_click=enable)
+st.sidebar.button("Salir del Chat",on_click=enable)
 
 if st.session_state.start_chat:
     if "openai_model" not in st.session_state:
