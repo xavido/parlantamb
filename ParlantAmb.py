@@ -27,7 +27,7 @@ st.set_page_config(page_title="Escola Voramar - Hablando con Salma y los secreto
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'grupoclase']
+l1 = ['xdominguez', 'grupoclase','ILAN']
 
 l2 = ['ILAN']
 l3 = ['dajil','aessalhi','sghanem']
