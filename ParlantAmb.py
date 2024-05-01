@@ -148,8 +148,11 @@ if st.session_state.start_chat:
         for message in assistant_messages_for_run:
             st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
             with st.chat_message("assistant"):
+                resposta = message.content[0].text.value
                 st.markdown(message.content[0].text.value)
-                st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+                if (resposta.find('sociedad')):
+                    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+                
 
 # Crea una conexión con la base de datos
         conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
