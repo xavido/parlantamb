@@ -146,7 +146,9 @@ if st.session_state.start_chat:
 
         df = get_data()
         # top-level filters
-        user_filter = st.selectbox("Escull un usuari", pd.unique(df["idc"]))
+        #user_filter = st.selectbox("Escull un usuari", pd.unique(df["idc"]))
+        st.markdown("### Detall General")
+        st.dataframe(df)
 
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
