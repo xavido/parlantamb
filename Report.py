@@ -159,11 +159,10 @@ if st.session_state.start_chat:
             st.markdown("### Distribución de Preguntas")
             conteo = df['idc'].value_counts().reset_index()
             conteo.columns = ['Usuario', 'Número de Preguntas']
-
             # Crea el gráfico de columnas
-            fig = px.bar(conteo, x='Usuario', y='Número de Preguntas', title='Número de preguntas por usuarix')
+            #fig = px.bar(conteo, x='Usuario', y='Número de Preguntas', title='Número de preguntas por usuarix')
             #fig = px.pie(df, values='pregunta', names='idc')
-            st.write(fig)
+            #st.write(fig)
             fig2 = px.pie(conteo, values='Número de Preguntas', names='Usuario')
             st.write(fig2)
 
