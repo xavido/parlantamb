@@ -167,9 +167,12 @@ if st.session_state.start_chat:
             st.write(fig2)
 
         with fig_col2:
-            st.markdown("### Galería Imágenes Generadas")
-            images = ['P2100483.JPG', 'P2100486.JPG', 'P2100488.JPG']
-            st.image(images, use_column_width=True, caption=["some generic text"] * len(images))
+            st.markdown("### Preguntas por fecha")
+            fechas = df['data'].value_counts().reset_index()
+            fechas.columns = ['Fecha', 'Número de Preguntas']
+             Crea el gráfico de columnas
+            fig = px.bar(fechas, x='Fecha', y='Número de Preguntas', title='Actividad por tiempo')
+            st.write(fig)
 
         st.markdown("### Detall General")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
