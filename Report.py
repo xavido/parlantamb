@@ -185,10 +185,9 @@ if st.session_state.start_chat:
         for i in range(len(df['infografia'])):
             if df['infografia'][i]:
                 df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
-                st.write(df['infografia'][i])
-            #df['infografia'][i] = 'https://www.xavidominguez.com/tecla/'+df['infografia'][i]
-            #listcaptions[i]='Test'
+                #st.write(df['infografia'][i])
+                listcaptions[i]='Test'
 
-        #st.image(df['infografia'],caption=listcaptions,output_format="JPEG")
+        st.image(df['infografia'],caption=listcaptions,output_format="JPEG")
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
