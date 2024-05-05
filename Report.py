@@ -41,6 +41,7 @@ openai.api_key = st.secrets["auto_pau"]
 
 l1 = ['xdominguez', 'mcarme']
 listcaptions =[]
+listimages = []
 # Disable the submit button after it is clicked
 
 def autoplay_audio(file_path: str):
@@ -186,9 +187,10 @@ if st.session_state.start_chat:
             if df['infografia'][i]:
                 df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
                 #st.write(df['infografia'][i])
+                listimages.append("https://www.xavidominguez.com/tecla/"+str(df['infografia'][i]))
                 listcaptions.append('Test')
 
         listcaptions.append('Test')
-        st.image(df['infografia'],caption=listcaptions,output_format="JPEG")
+        st.image(listimages,caption=listcaptions,output_format="JPEG")
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
