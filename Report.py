@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 
-csv_file_path = 'egipto_informe.csv'
+csv_file_path = 'egipto_informe_2.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
@@ -93,7 +93,6 @@ with st.sidebar.form("usuari_form"):
 
 
 st.title("Informe - Hablando con...Salma")
-st.write("Soy egiptóloga e investigo los secretos del Antiguo Egipto.")
 
 st.sidebar.button("Salir del Informe",on_click=enable)
 
