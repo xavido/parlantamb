@@ -187,7 +187,7 @@ if st.session_state.start_chat:
             if df['infografia'][i]:
                 df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
                 #st.write(df['infografia'][i])
-                listimages.append("'https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])+"'")
+                listimages.append(str(df['infografia'][i]))
                 listcaptions.append('Test')
 
         st.image(listimages,caption=listcaptions,width=200,output_format="JPEG")
