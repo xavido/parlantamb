@@ -1,11 +1,16 @@
 import openai
-import streamlit as st
+
 import time
 import mysql.connector
 import base64
 import csv
 import requests
 import ftplib
+
+import numpy as np  # np mean, np random
+import pandas as pd  # read csv, df manipulation
+import plotly.express as px  # interactive charts
+import streamlit as st  # 🎈 data web app development
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -124,10 +129,6 @@ if st.session_state.start_chat:
                 for row in result:
                     csvwriter.writerow(row)
 
-            with open(csv_file_path, 'w', newline='') as csvfile:
-                spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-                for row in spamreader:
-                 st.write(', '.join(row))
         else:
             sys.exit("No rows found for query: {}".format(sql))
 
