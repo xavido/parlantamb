@@ -147,6 +147,18 @@ if st.session_state.start_chat:
         df = get_data()
         # top-level filters
         #user_filter = st.selectbox("Escull un usuari", pd.unique(df["idc"]))
+        # create two columns for charts
+        fig_col1, fig_col2 = st.columns(2)
+
+        with fig_col1:
+            st.markdown("### Distribució Preguntes")
+            fig = px.pie(df, values='tip', names='idc')
+            fig.show()
+            st.write(fig)
+
+        with fig_col2:
+            st.markdown("### Second Chart")
+
         st.markdown("### Detall General")
         st.dataframe(df,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,},hide_index=True)
 
