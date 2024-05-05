@@ -181,6 +181,19 @@ if st.session_state.start_chat:
                     n=1
                 )
                 st.image(response.data[0].url, caption=prompt)
+                resinfografria = requests.get(response.data[0].url)
+
+                creaName = str(nom) + "_" + str(time.time()) + "_" + str(20000) + ".jpg"
+
+                with open(creaName, 'wb') as f:
+                    f.write(res.content)
+
+                ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                file = open(creaName, 'rb')  # file to send
+                # Read file in binary mode
+                ftp_server.storbinary('STOR ' + creaName, file)
+                ftp_server.quit()
+                file.close()  # close file and FTP
                 #if (resposta.find('sociedad')):
                 #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
 
@@ -195,7 +208,7 @@ if st.session_state.start_chat:
         # Ejecuta una consulta SQL
         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema) VALUES (%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, '', 20000)
+        valores = (nom, prompt, message.content[0].text.value, creaName, 20000)
         cur.execute(sql, valores)
 
         # Obtiene los resultados de la consulta
