@@ -170,7 +170,6 @@ if st.session_state.start_chat:
         with fig_col2:
             st.markdown("### Preguntas por fecha")
             df['data'] = pd.to_datetime(df['data']).dt.date
-            df['data'] = df['data'].dt.date
             # Agrupa por fecha y cuenta las preguntas únicas por fecha
             conteo_preguntas = df.groupby('data')['pregunta'].nunique().reset_index()
             conteo_preguntas.columns = ['Fecha', 'Número de Preguntas']
