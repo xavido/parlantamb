@@ -40,7 +40,7 @@ st.set_page_config(page_title="Informe sobre - Hablando con Salma y los secretos
 openai.api_key = st.secrets["auto_pau"]
 
 l1 = ['xdominguez', 'mcarme']
-
+listcaptions =[]
 # Disable the submit button after it is clicked
 
 def autoplay_audio(file_path: str):
