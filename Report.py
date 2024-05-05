@@ -138,5 +138,13 @@ if st.session_state.start_chat:
         cur.close()
         conn.close()
 
+        # read csv from a URL
+        @st.experimental_memo
+        def get_data() -> pd.DataFrame:
+            return pd.read_csv(csv_file_path)
+
+
+        df = get_data()
+
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
