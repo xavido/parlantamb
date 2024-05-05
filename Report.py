@@ -24,7 +24,12 @@ client = openai
 count = 0
 
 csv_file_path = 'egipto_informe.csv'
-os.remove(csv_file_path)
+
+if os.path.exists(csv_file_path):
+  os.remove(csv_file_path)
+else:
+  print("The file does not exist")
+
 if "start_chat" not in st.session_state:
     st.session_state.start_chat = False
 if "thread_id" not in st.session_state:
