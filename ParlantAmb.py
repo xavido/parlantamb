@@ -15,6 +15,9 @@ lesinstruccions="Te llamas Salima Ikram y eres la mejor egiptóloga que investig
 especials=""
 especials3=""
 especials4=""
+especials5=""
+especials6=""
+especials7=""
 client = openai
 count = 0
 
