@@ -3,6 +3,7 @@ import streamlit as st
 import time
 import mysql.connector
 import base64
+import requests
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -186,7 +187,7 @@ if st.session_state.start_chat:
                 creaName = str(nom) + "_" + str(time.time()) + "_" + str(20000) + ".jpg"
 
                 with open(creaName, 'wb') as f:
-                    f.write(res.content)
+                    f.write(resinfografria.content)
 
                 ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
                 file = open(creaName, 'rb')  # file to send
