@@ -153,7 +153,6 @@ if st.session_state.start_chat:
         with fig_col1:
             st.markdown("### Distribució Preguntes")
             fig = px.pie(df, values='pregunta', names='idc')
-            fig.show()
             st.write(fig)
 
         with fig_col2:
