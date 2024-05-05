@@ -167,7 +167,7 @@ if st.session_state.start_chat:
             st.write(fig2)
 
         with fig_col2:
-            st.markdown("### Galería Imatges Generades")
+            st.markdown("### Galería Imágenes Generadas")
             list_images = df['infografia'].value_counts().reset_index()
             st.image(list_images, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB",
                      output_format="auto")
