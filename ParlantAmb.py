@@ -177,7 +177,7 @@ if st.session_state.start_chat:
                 st.markdown(message.content[0].text.value)
                 response = client.images.generate(
                     model="dall-e-3",
-                    prompt="Haz una imagen realista que represente este texto:" + resposta,
+                    prompt="Haz una imagen realista SIN TEXTO,a partir de esta descripción:" + resposta,
                     size="1024x1024",
                     quality="standard",
                     n=1
