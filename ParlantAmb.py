@@ -18,6 +18,7 @@ especials4=""
 especials5=""
 especials6=""
 especials7=""
+especials8=""
 client = openai
 count = 0
 
@@ -30,14 +31,15 @@ st.set_page_config(page_title="Hablando con Salma y los secretos del Antiguo Egi
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'mcarme','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe']
+l1 = ['xdominguez', 'mcarme','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe','gsociedad']
 
-l2 = ['ILAN','ilan','garte','gescritura','gmomias','gcreencias','gdioses']
+l2 = ['ILAN','ilan','garte','gescritura','gmomias','gcreencias','gdioses','gsociedad']
 l3 = ['garte']
 l4 = ['gescritura']
 l5 = ['gmomias']
 l6 = ['gcreencias']
 l7 = ['gdioses']
+l8 = ['gsociedad']
 
 # Disable the submit button after it is clicked
 
@@ -77,6 +79,8 @@ def disable():
             especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
         if nom in l7:
             especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
+        if nom in l8:
+            especials8 = "Gives answers only about society in Ancient Egypt.Find the answer in the document in the section:'Organización de la sociedad.'"
 
 
 def enable():
@@ -106,6 +110,8 @@ with st.sidebar.form("usuari_form"):
       especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
   if nom in l7:
       especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
+  if nom in l8:
+      especials8 = "Gives answers only about society in Ancient Egypt.Find the answer in the document in the section:'Organización de la sociedad.'"
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
