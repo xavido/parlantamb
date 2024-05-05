@@ -168,9 +168,8 @@ if st.session_state.start_chat:
 
         with fig_col2:
             st.markdown("### Galería Imágenes Generadas")
-            list_images = df['infografia'].value_counts().reset_index()
-            st.image(list_images, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB",
-                     output_format="auto")
+            list_images = df['infografia']
+            st.image(list_images)
 
         st.markdown("### Detall General")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
