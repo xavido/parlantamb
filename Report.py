@@ -168,8 +168,8 @@ if st.session_state.start_chat:
 
         with fig_col2:
             st.markdown("### Galería Imágenes Generadas")
-            list_images = df['infografia']
-            st.image(list_images)
+            images = ['P2100483.JPG', 'P2100486.JPG', 'P2100488.JPG']
+            st.image(images, use_column_width=True, caption=["some generic text"] * len(images))
 
         st.markdown("### Detall General")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
