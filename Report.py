@@ -190,7 +190,6 @@ if st.session_state.start_chat:
                 listimages.append("https://www.xavidominguez.com/tecla/"+str(df['infografia'][i]))
                 listcaptions.append('Test')
 
-        listcaptions.append('Test')
         st.image(listimages,caption=listcaptions,output_format="JPEG")
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
