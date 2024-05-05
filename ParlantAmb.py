@@ -27,12 +27,14 @@ st.set_page_config(page_title="Hablando con Salma y los secretos del Antiguo Egi
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'mcarme','grupoclase','ILAN','ilan','CHLOE','chloe']
+l1 = ['xdominguez', 'mcarme','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe']
 
-l2 = ['ILAN','ilan']
-l3 = ['CHLOE','chloe']
-l4 = ['fali','ifatima','mmuhammad','hrabani','sasghar','maslam','hmir','hnoor','krani']
-l5 = ['efreitas','aessalhi','ifatima','hrabani','vtrinidad','azeaaj','sasghar','maslam','sghanem','hmir']
+l2 = ['ILAN','ilan','garte','gescritura','gmomias','gcreencias','gdioses']
+l3 = ['garte']
+l4 = ['gescritura']
+l5 = ['gmomias']
+l6 = ['gcreencias']
+l7 = ['gdioses']
 
 # Disable the submit button after it is clicked
 
@@ -61,11 +63,17 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Este usuario no existe]")
     if nom in l2:
-        especials = "Summarize the answer to 2 lines as if it were being read by an 5 year old child.Give the answer in capital letters."
+        especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
     if nom in l3:
-        especials3 = "Give the answer in linked letters"
+        especials3 = "Gives answers only about art in Ancient Egypt."
     if nom in l4:
-        especials4 = "Repeat the same answer in urdu too.Answer just about history.Add at the end of your answer that the information should be checked with the teacher"
+        especials4 = "Gives answers only about writing in Ancient Egypt."
+    if nom in l5:
+        especials5 = "Gives answers only about Mummies in Ancient Egypt."
+    if nom in l6:
+        especials6 = "Gives answers only about believes in Ancient Egypt."
+    if nom in l7:
+        especials7 = "Gives answers only about gods in Ancient Egypt."
 
 
 def enable():
@@ -84,11 +92,17 @@ with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escribe tu identificación 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Chat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l2:
-      especials = "Summarize the answer to 2 lines as if it were being read by an 5 year old child.Give the answer in capital letters."
+      especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
   if nom in l3:
-      especials3 = "Give the answer in linked letters"
+      especials3 = "Gives answers only about art in Ancient Egypt."
   if nom in l4:
-      especials4 = "Repeat the same answer in urdu too.Answer just about history"
+      especials4 = "Gives answers only about writing in Ancient Egypt."
+  if nom in l5:
+      especials5 = "Gives answers only about Mummies in Ancient Egypt."
+  if nom in l6:
+      especials6 = "Gives answers only about believes in Ancient Egypt."
+  if nom in l7:
+      especials7 = "Gives answers only about gods in Ancient Egypt."
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
@@ -121,7 +135,7 @@ if st.session_state.start_chat:
         client.beta.threads.messages.create(
             thread_id=st.session_state.thread_id,
             role="user",
-            content=prompt+especials+especials3+especials4
+            content=prompt+especials+especials3+especials4+especials5+especials6+especials7
         )
 
         run = client.beta.threads.runs.create(
