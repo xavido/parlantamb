@@ -11,6 +11,7 @@ import numpy as np  # np mean, np random
 import pandas as pd  # read csv, df manipulation
 import plotly.express as px  # interactive charts
 import streamlit as st  # 🎈 data web app development
+import os
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -23,7 +24,7 @@ client = openai
 count = 0
 
 csv_file_path = 'egipto_informe.csv'
-
+os.remove(csv_file_path)
 if "start_chat" not in st.session_state:
     st.session_state.start_chat = False
 if "thread_id" not in st.session_state:
