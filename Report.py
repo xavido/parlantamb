@@ -183,8 +183,9 @@ if st.session_state.start_chat:
         st.markdown("### Datos Generales")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
         for i in range(len(df['infografia'])):
-            df['infografia'][i] = 'https://www.xavidominguez.com/tecla/'+df['infografia'][i]
-            listcaptions[i]='Test'
+            st.write(df['infografia'][i])
+            #df['infografia'][i] = 'https://www.xavidominguez.com/tecla/'+df['infografia'][i]
+            #listcaptions[i]='Test'
 
         st.image(df['infografia'],caption=listcaptions,output_format="JPEG")
 else:
