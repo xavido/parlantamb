@@ -4,6 +4,7 @@ import time
 import mysql.connector
 import base64
 import requests
+import ftplib
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -69,7 +70,7 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Este usuario no existe]")
         if nom in l2:
-            especials = "Give half of the answer in lower case and the other half in capitals."
+            especials = "Find the answer in the document.Give half of the answer in lower case and the other half in capitals."
         if nom in l3:
             especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
         if nom in l4:
@@ -100,7 +101,7 @@ with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escribe tu identificación 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Chat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l2:
-      especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
+      especials = "Find the answer in the document.Give half of the answer in lower case and the other half in capitals."
   if nom in l3:
       especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
   if nom in l4:
