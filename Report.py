@@ -153,7 +153,7 @@ if st.session_state.start_chat:
         # top-level filters
         #user_filter = st.selectbox("Escull un usuari", pd.unique(df["idc"]))
         # create two columns for charts
-        fig_col1 = st.columns(1)
+        fig_col1, fig_col2 = st.columns(2)
 
         with fig_col1:
             st.markdown("### Distribución de Preguntas")
@@ -165,10 +165,11 @@ if st.session_state.start_chat:
             #fig = px.pie(df, values='pregunta', names='idc')
             st.write(fig)
 
-
+        with fig_col2:
+            st.markdown("### Second Chart")
 
         st.markdown("### Detall General")
-        st.dataframe(df,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,},hide_index=True)
+        st.dataframe(df,width=1000,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
 
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
