@@ -123,6 +123,8 @@ if st.session_state.start_chat:
                 csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 for row in result:
                     csvwriter.writerow(row)
+
+            with open(csv_file_path, 'w', newline='') as csvfile:
                 spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
                 for row in spamreader:
                  st.write(', '.join(row))
