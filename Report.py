@@ -170,7 +170,7 @@ if st.session_state.start_chat:
             st.markdown("### Second Chart")
 
         st.markdown("### Detall General")
-        st.dataframe(df,width=1000,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
+        st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
 
 else:
     st.write("Añade tus datos y haz click en 'Ver Informe'.")
