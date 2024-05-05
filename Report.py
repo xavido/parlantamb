@@ -168,7 +168,7 @@ if st.session_state.start_chat:
 
         with fig_col2:
             st.markdown("### Preguntas por fecha")
-            fechas = df['data'].value_counts().reset_index()
+            fechas = df['data'].value_counts()
             fechas.columns = ['Fecha', 'Número de Preguntas']
             fig = px.bar(fechas, x='Fecha', y='Número de Preguntas', title='Actividad por tiempo')
             st.write(fig)
