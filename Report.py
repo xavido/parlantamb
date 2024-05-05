@@ -164,6 +164,8 @@ if st.session_state.start_chat:
             fig = px.bar(conteo, x='Usuario', y='Número de Preguntas', title='Número de preguntas por usuarix')
             #fig = px.pie(df, values='pregunta', names='idc')
             st.write(fig)
+            fig2 = px.pie(conteo, values='Número de Preguntas', names='Usuario')
+            st.write(fig2)
 
         with fig_col2:
             st.markdown("### Second Chart")
