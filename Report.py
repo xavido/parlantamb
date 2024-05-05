@@ -168,12 +168,19 @@ if st.session_state.start_chat:
 
         with fig_col2:
             st.markdown("### Preguntas por fecha")
-            fechas = df['data'].value_counts()
-            fechas.columns = ['Fecha', 'Número de Preguntas']
-            fig = px.bar(fechas, x='Fecha', y='Número de Preguntas', title='Actividad por tiempo')
+            df['data'] = pd.to_datetime(df['data'])
+
+            # Agrupa por fecha y cuenta las preguntas únicas por fecha
+            conteo_preguntas = df.groupby('data')['pregunta'].nunique().reset_index()
+            conteo_preguntas.columns = ['Fecha', 'Número de Preguntas']
+
+            # Crea el gráfico de columnas
+            fig = px.bar(conteo_preguntas, x='Fecha', y='Número de Preguntas',
+                         title='Número de Preguntas por Fecha')
+
             st.write(fig)
 
-        st.markdown("### Detall General")
+        st.markdown("### Datos Generales")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
 
 else:
