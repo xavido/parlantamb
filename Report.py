@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 
-csv_file_path = 'egipto_informe_3.csv'
+csv_file_path = 'egipto_informe_4.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
@@ -184,6 +184,7 @@ if st.session_state.start_chat:
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
         for i in range(len(df['infografia'])):
             if df['infografia'][i]:
+                df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
                 st.write(df['infografia'][i])
             #df['infografia'][i] = 'https://www.xavidominguez.com/tecla/'+df['infografia'][i]
             #listcaptions[i]='Test'
