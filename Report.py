@@ -123,8 +123,9 @@ if st.session_state.start_chat:
                 csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 for row in result:
                     csvwriter.writerow(row)
-
-            st.write(csvwriter)
+                spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+                for row in spamreader:
+                 st.write(', '.join(row))
         else:
             sys.exit("No rows found for query: {}".format(sql))
 
