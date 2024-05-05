@@ -66,7 +66,7 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Este usuario no existe]")
         if nom in l2:
-            especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
+            especials = "Gives answer in 5 lines from the document.Give half of the answer in lower case and the other half in capitals."
         if nom in l3:
             especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
         if nom in l4:
