@@ -62,18 +62,18 @@ def disable():
     else:
         if nom != '':
             st.sidebar.write(":red[Este usuario no existe]")
-    if nom in l2:
-        especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
-    if nom in l3:
-        especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
-    if nom in l4:
-        especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer in the document in the section: 'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
-    if nom in l5:
-        especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer in the document in the section:'MOMIAS. Sarcófagos, momias y momificación.'"
-    if nom in l6:
-        especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
-    if nom in l7:
-        especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
+        if nom in l2:
+            especials = "Summarize the answer to 5 lines as if it were being read by an 5 year old child.Give half of the answer in lower case and the other half in capitals."
+        if nom in l3:
+            especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
+        if nom in l4:
+            especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer in the document in the section: 'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
+        if nom in l5:
+            especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer in the document in the section:'MOMIAS. Sarcófagos, momias y momificación.'"
+        if nom in l6:
+            especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
+        if nom in l7:
+            especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
 
 
 def enable():
