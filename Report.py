@@ -163,11 +163,14 @@ if st.session_state.start_chat:
             #fig = px.bar(conteo, x='Usuario', y='Número de Preguntas', title='Número de preguntas por usuarix')
             #fig = px.pie(df, values='pregunta', names='idc')
             #st.write(fig)
-            fig2 = px.pie(conteo, values='Número de Preguntas', names='Usuario')
+            fig2 = px.pie(conteo, values='Número de Preguntas', names='Usuario',title='Número de preguntas por usuarix')
             st.write(fig2)
 
         with fig_col2:
-            st.markdown("### Second Chart")
+            st.markdown("### Galería Imatges Generades")
+            list_images = df['infografia'].value_counts().reset_index()
+            st.image(list_images, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB",
+                     output_format="auto")
 
         st.markdown("### Detall General")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
