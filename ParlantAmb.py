@@ -72,17 +72,17 @@ def disable():
         if nom in l2:
             especials = "Answer always in spanish."
         if nom in l3:
-            especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
+            especials3 = "Gives answers only about art in Ancient Egypt.Find the answer especially in the context of 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
         if nom in l4:
-            especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer in the document in the section: 'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
+            especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
         if nom in l5:
-            especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer in the document in the section:'MOMIAS. Sarcófagos, momias y momificación.'"
+            especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  'MOMIAS. Sarcófagos, momias y momificación.'"
         if nom in l6:
-            especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
+            especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer especially in the context of  'CREENCIAS y objetos enterrados en las pirámides'"
         if nom in l7:
-            especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
+            especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of 'MITOLOGÍA, los dioses.'"
         if nom in l8:
-            especials8 = "Gives answers only about society in Ancient Egypt.Find the answer in the document in the section:'Organización de la sociedad.'"
+            especials8 = "Gives answers only about society in Ancient Egypt.Find the answer especially in the context of  'Organización de la sociedad en el Antiguo Egipto.'"
 
 
 def enable():
@@ -103,17 +103,17 @@ with st.sidebar.form("usuari_form"):
   if nom in l2:
       especials = "Answer always in spanish."
   if nom in l3:
-      especials3 = "Gives answers only about art in Ancient Egypt.Find the answer in the document in the section: 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
+      especials3 = "Gives answers only about art in Ancient Egypt.Find the answer especially in the context of 'EL ARTE EN EL ANTIGUO EGIPTO: pintura y escultura.'"
   if nom in l4:
-      especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer in the document in the section: 'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
+      especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  'ESCRITURA EGIPCIA: jeroglíficos y abecedario. '"
   if nom in l5:
-      especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer in the document in the section:'MOMIAS. Sarcófagos, momias y momificación.'"
+      especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  'MOMIAS. Sarcófagos, momias y momificación.'"
   if nom in l6:
-      especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer in the document in the section:'CREENCIAS y objetos enterrados en las pirámides'"
+      especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer especially in the context of  'CREENCIAS y objetos enterrados en las pirámides'"
   if nom in l7:
-      especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer in the document in the section:'MITOLOGÍA, los dioses.'"
+      especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of 'MITOLOGÍA, los dioses.'"
   if nom in l8:
-      especials8 = "Gives answers only about society in Ancient Egypt.Find the answer in the document in the section:'Organización de la sociedad.'"
+      especials8 = "Gives answers only about society in Ancient Egypt.Find the answer especially in the context of  'Organización de la sociedad en el Antiguo Egipto.'"
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
