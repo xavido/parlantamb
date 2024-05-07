@@ -178,7 +178,7 @@ if st.session_state.start_chat:
                 if nom in l8:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen realista sobre la sociedad y las personas en el Antiguo Egipto:",
+                        prompt="Haz una imagen realista sobre la estructura de la sociedad y las personas en el Antiguo Egipto:",
                         size="1024x1024",
                         quality="standard",
                         n=1
