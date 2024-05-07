@@ -175,13 +175,22 @@ if st.session_state.start_chat:
             with st.chat_message("assistant"):
                 resposta = message.content[0].text.value
                 st.markdown(message.content[0].text.value)
-                response = client.images.generate(
-                    model="dall-e-3",
-                    prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
-                    size="1024x1024",
-                    quality="standard",
-                    n=1
-                )
+                if nom in l8:
+                    response = client.images.generate(
+                        model="dall-e-3",
+                        prompt="Haz una imagen realista sobre la sociedad y las personas en el Antiguo Egipto:",
+                        size="1024x1024",
+                        quality="standard",
+                        n=1
+                    )
+                else:
+                    response = client.images.generate(
+                        model="dall-e-3",
+                        prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
+                        size="1024x1024",
+                        quality="standard",
+                        n=1
+                    )
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
