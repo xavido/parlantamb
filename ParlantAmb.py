@@ -191,6 +191,7 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
+                time.sleep(10)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -242,6 +243,7 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
+            time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
