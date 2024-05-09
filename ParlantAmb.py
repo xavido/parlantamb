@@ -82,7 +82,7 @@ def disable():
         if nom in l7:
             especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
         if nom in l8:
-            especials8 = "Gives answers only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+            especials8 = "Gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
 
 
 def enable():
@@ -113,7 +113,7 @@ with st.sidebar.form("usuari_form"):
   if nom in l7:
       especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
   if nom in l8:
-      especials8 = "Gives answers only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+      especials8 = "Gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
