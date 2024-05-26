@@ -361,4 +361,4 @@ if st.session_state.start_chat:
 
 
 else:
-    st.write("Añade tus datos y haz click en 'Iniciar Chat'.")
+    st.write("Afegeix les teves dades y clicka a 'Iniciar Xat'.")
