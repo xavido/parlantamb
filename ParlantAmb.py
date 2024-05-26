@@ -250,7 +250,7 @@ if st.session_state.start_chat:
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
-    if stt_user := speech_to_text(language='es', use_container_width=True, just_once=True, key='STT'):
+    if stt_user := speech_to_text(language='es', start_prompt="Hacer pregunta con voz",stop_prompt="Fin de pregunta",use_container_width=True, just_once=True, key='STT'):
         prompt = stt_user
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
