@@ -5,12 +5,7 @@ import mysql.connector
 import base64
 import requests
 import ftplib
-import numpy as np
-from streamlit_webrtc import WebRtcMode, webrtc_streamer
-# from streamlit_webrtc import VideoTransformerBase, VideoTransformerContext
 
-from pydub import AudioSegment
-import queue, pydub, tempfile,  os
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
