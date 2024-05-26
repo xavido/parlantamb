@@ -141,11 +141,10 @@ if st.session_state.start_chat:
             st.markdown(message["content"])
 
     stt_user = speech_to_text(language='en', use_container_width=True, just_once=True, key='STT')
+    if stt_user:
+        st.session_state.messages.append({"role": "user", "content": stt_user})
 
-    if (prompt := st.chat_input("Escribe aquí tu pregunta")) or stt_user :
-
-        if len(str(stt_user)>=1):
-            prompt = stt_user
+    if prompt := st.chat_input("Escribe aquí tu pregunta") :
 
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
