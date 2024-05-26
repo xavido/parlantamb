@@ -11,6 +11,7 @@ with c1:
     st.write("Convert speech to text:")
 with c2:
     text=speech_to_text(language='en',use_container_width=True,just_once=True,key='STT')
+    st.write(text)
 
 if text:
     state.text_received.append(text)
