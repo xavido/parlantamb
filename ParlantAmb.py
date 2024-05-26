@@ -5,7 +5,7 @@ import mysql.connector
 import base64
 import requests
 import ftplib
-
+from streamlit_mic_recorder import mic_recorder,speech_to_text
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -128,6 +128,9 @@ st.title("Hablando con...Salma")
 st.write("Soy egiptóloga e investigo los secretos del Antiguo Egipto.")
 
 st.sidebar.button("Salir del Chat",on_click=enable)
+
+text = speech_to_text(language='en', use_container_width=True, just_once=True, key='STT')
+st.chat_input(text)
 
 if st.session_state.start_chat:
     if "openai_model" not in st.session_state:
