@@ -64,7 +64,7 @@ filename = f"{base_filename}_{int(time.time())}.wav"
 audio_segment.export(filename, format="wav")
 
 
-def transcribe(audio_segment: AudioSegment, debug: bool = False) -> str:
+def transcribe(audio_segment:AudioSegment, debug: bool = False) -> str:
     """
     Transcribe an audio segment using OpenAI's Whisper ASR system.
     Args:
