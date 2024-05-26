@@ -125,7 +125,7 @@ with st.sidebar.form("usuari_form"):
 
 
 st.title("Parlant amb l'Ann Moore")
-st.write("Soc inventora, investigadora i expera en màquines simples.")
+st.write("Soc inventora, investigadora i experta en màquines simples.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
@@ -248,7 +248,7 @@ if st.session_state.start_chat:
             #time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
-                
+
     if prompt := st.chat_input("Escriu la teva pregunta") :
 
         st.session_state.messages.append({"role": "user", "content": prompt})
