@@ -159,7 +159,7 @@ if st.session_state.start_chat:
         )
 
         while run.status != 'completed':
-            time.sleep(1)
+            #time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
                 run_id=run.id
@@ -194,7 +194,7 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
-                time.sleep(10)
+                #time.sleep(10)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -246,11 +246,11 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
-            time.sleep(10)
+            #time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
-    if stt_user := speech_to_text(language='es', start_prompt="Fes la pregunta amb veu",stop_prompt="Fi de pregunta",use_container_width=True, just_once=True, key='STT'):
+    if stt_user := speech_to_text(language='ca', start_prompt="Fes la pregunta amb veu",stop_prompt="Fi de pregunta",use_container_width=True, just_once=True, key='STT'):
         prompt = stt_user
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
@@ -269,7 +269,7 @@ if st.session_state.start_chat:
         )
 
         while run.status != 'completed':
-            time.sleep(1)
+            #time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
                 run_id=run.id
@@ -304,7 +304,7 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
-                time.sleep(10)
+                #time.sleep(10)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -355,7 +355,7 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
-            time.sleep(10)
+            #time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
