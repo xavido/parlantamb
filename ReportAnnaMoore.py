@@ -40,6 +40,9 @@ st.set_page_config(page_title="Informe sobre la investigació alumnes de les mà
 openai.api_key = st.secrets["auto_pau"]
 
 l1 = ['xdominguez', 'dyumi']
+lc = ['arehman','dbatista','ccastillo','alasurashvili','dmajdoub','aelahyani','egonçalves',
+'fgueye','sjaved','mkaur','imerino','ynawaz','kpacheco','zrehman','yrivera','jsaavedra','asegura','dsena','asingh',
+'rtrinidad','iyucra','czambrana','djimenez','mbarahona']
 listcaptions =[]
 listimages = []
 # Disable the submit button after it is clicked
@@ -180,6 +183,10 @@ if st.session_state.start_chat:
 
             st.write(fig)
 
+        st.markdown('### Llistat usuaris sense participar')
+        noparticipating = list(set(lc) - set(df['idc']))
+        us_noparticipating = ",".join(str(element) for element in noparticipating)
+        st.markdown(us_noparticipating)
         st.markdown("### Dades Generals")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
         for i in range(len(df['infografia'])):
