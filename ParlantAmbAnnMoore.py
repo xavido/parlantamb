@@ -34,11 +34,14 @@ st.set_page_config(page_title="Parlant amb l'Ann Moore i les màquines simples",
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'mcarme','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe','gsociedad']
+l1 = ['xdominguez','dyumi','arehman','dbatista','ccastillo','alasurashvili','dmajdoub','aelahyani','egonçalves',
+'fgueye','sjaved','mkaur','imerino','ynawaz','kpacheco','zrehman','yrivera','jsaavedra','asegura','dsena','asingh',
+'rtrinidad','iyucra','czambrana','djimenez','mbarahona']
 
-l2 = ['ILAN','ilan','garte','gescritura','gmomias','gcreencias','gdioses','gsociedad']
-l3 = ['garte']
-l4 = ['gescritura']
+
+l2 = ['arehman','ccastillo','alasurashvili']
+l3 = ['arehman']
+l4 = ['alasurashvili']
 l5 = ['gmomias']
 l6 = ['gcreencias']
 l7 = ['gdioses']
@@ -71,11 +74,11 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Aquest usuari no existeix]")
         if nom in l2:
-            especials = "Answer always in catalan."
+            especials = "Answer always in catalan and 2 sentences."
         if nom in l3:
-            especials3 = "Gives short answers only about simple machines as if I were 5 years old."
+            especials3 = "Gives answers in 2 sentences only about simple machines as if I were 5 years old in catalan and urdu."
         if nom in l4:
-            especials4 = "Gives answers only about simple machines as if I were 5 years old."
+            especials4 = "Gives answers in 2 sentences only about simple machines as if I were 5 years old in catalan and georgian."
         if nom in l5:
             especials5 = "Gives answers only about simple machines as if I were 5 years old."
         if nom in l6:

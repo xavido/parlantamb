@@ -248,7 +248,7 @@ if st.session_state.start_chat:
             time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
-                
+
     if prompt := st.chat_input("Escribe aquí tu pregunta") :
 
         st.session_state.messages.append({"role": "user", "content": prompt})
