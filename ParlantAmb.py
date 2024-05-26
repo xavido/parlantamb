@@ -130,7 +130,7 @@ st.write("Soy egiptóloga e investigo los secretos del Antiguo Egipto.")
 st.sidebar.button("Salir del Chat",on_click=enable)
 
 if st.session_state.start_chat:
-    text = speech_to_text(language='en', use_container_width=True, just_once=True, key='STT')
+
     if "openai_model" not in st.session_state:
         st.session_state.openai_model = "gpt-4-1106-preview"
     if "messages" not in st.session_state:
@@ -140,6 +140,8 @@ if st.session_state.start_chat:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
+    if prompt := speech_to_text(language='en', use_container_width=True, just_once=True, key='STT'):
+        st.session_state.messages.append({"role": "user", "content": prompt})
     if prompt := st.chat_input("Escribe aquí tu pregunta"):
 
         st.session_state.messages.append({"role": "user", "content": prompt})
