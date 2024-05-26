@@ -5,6 +5,8 @@ import mysql.connector
 import base64
 import requests
 import ftplib
+import speech_recognition as sr
+from pydub import AudioSegment
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
