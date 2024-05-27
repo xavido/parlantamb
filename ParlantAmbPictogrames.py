@@ -180,7 +180,7 @@ if st.session_state.start_chat:
                 if nom in l8:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo dibujo sobre las diferentes partes de una planta:",
+                        prompt="Haz una imagen tipo PICTOGRAMA sobre las diferentes partes de una planta:",
                         size="1024x1024",
                         quality="standard",
                         n=1
@@ -188,12 +188,12 @@ if st.session_state.start_chat:
                 else:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo dibujo a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta + ".",
+                        prompt="Haz una imagen tipo PICTOGRAMA a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta + ".",
                         size="1024x1024",
                         quality="standard",
                         n=1
                     )
-                time.sleep(10)
+                #time.sleep(10)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -244,7 +244,7 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
-            time.sleep(10)
+            #time.sleep(10)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
@@ -289,7 +289,7 @@ if st.session_state.start_chat:
                 if nom in l8:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo dibujo sobre las diferentes partes de una planta:",
+                        prompt="Haz una imagen tipo PICTOGRAMA sobre las diferentes partes de una planta:",
                         size="1024x1024",
                         quality="standard",
                         n=1
@@ -297,7 +297,7 @@ if st.session_state.start_chat:
                 else:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo dibujo a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
+                        prompt="Haz una imagen tipo PICTOGRAMA a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
                         size="1024x1024",
                         quality="standard",
                         n=1
