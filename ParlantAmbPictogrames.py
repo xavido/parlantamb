@@ -99,7 +99,7 @@ if "disabled" not in st.session_state:
 
 with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escribe tu identificación 👇",disabled=st.session_state.disabled, key=1)
-  submit_button = st.form_submit_button(label="Iniciar Chat",disabled=st.session_state.disabled, on_click=disable)
+  submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l2:
       especials = "Gives answers only about plants and botanics.Short answer in 1 line and 6 words maximum always in catalan and repeat the answer in spanish."
   if nom in l3:
@@ -139,7 +139,7 @@ if st.session_state.start_chat:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-    if stt_user := speech_to_text(language='es', start_prompt="Fes pregunta amb veu",stop_prompt="Fi de pregunta",use_container_width=True, just_once=True, key='STT'):
+    if stt_user := speech_to_text(language='ca', start_prompt="Fes pregunta amb veu",stop_prompt="Fi de pregunta",use_container_width=True, just_once=True, key='STT'):
         prompt = stt_user
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
