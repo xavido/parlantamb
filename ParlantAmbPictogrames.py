@@ -30,7 +30,7 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Hablando con Salma y los secretos del Antiguo Egipto", page_icon=":speech_balloon:")
+st.set_page_config(page_title="Parlant amb Flor i els secrets de les plantes", page_icon=":speech_balloon:")
 
 openai.api_key = st.secrets["auto_pau"]
 
