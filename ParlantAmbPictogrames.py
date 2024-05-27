@@ -34,7 +34,7 @@ st.set_page_config(page_title="Parlant amb Flor i els secrets de les plantes", p
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'mcarme','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe','gsociedad']
+l1 = ['xdominguez', 'mqueralto','garte','gescritura','gmomias','gcreencias','gdioses','ILAN','ilan','CHLOE','chloe','gsociedad']
 
 l2 = ['ILAN','ilan','garte','gescritura','gmomias','gcreencias','gdioses','gsociedad']
 l3 = ['garte']
