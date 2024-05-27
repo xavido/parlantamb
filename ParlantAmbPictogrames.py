@@ -180,7 +180,7 @@ if st.session_state.start_chat:
                 if nom in l8:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo PICTOGRAMA sobre las diferentes partes de una planta:",
+                        prompt="A vector representation of a PICTOGRAM sobre las diferentes partes de una planta:",
                         size="1024x1024",
                         quality="standard",
                         n=1
@@ -188,7 +188,7 @@ if st.session_state.start_chat:
                 else:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo PICTOGRAMA a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta + ".",
+                        prompt="A vector representation of:" + resposta + ".",
                         size="1024x1024",
                         quality="standard",
                         n=1
@@ -289,7 +289,7 @@ if st.session_state.start_chat:
                 if nom in l8:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo PICTOGRAMA sobre las diferentes partes de una planta:",
+                        prompt="A vector representation of las diferentes partes de una planta:",
                         size="1024x1024",
                         quality="standard",
                         n=1
@@ -297,7 +297,7 @@ if st.session_state.start_chat:
                 else:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen tipo PICTOGRAMA a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
+                        prompt="A vector representation of:" + resposta+".",
                         size="1024x1024",
                         quality="standard",
                         n=1
