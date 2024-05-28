@@ -154,6 +154,20 @@ if st.session_state.start_chat:
         # top-level filters
         #user_filter = st.selectbox("Escull un usuari", pd.unique(df["idc"]))
         # create two columns for charts
+        num_preguntas_cortas = sum(1 for pregunta in df["pregunta"] if len(pregunta.split()) <= 2)
+        # Contar el número de preguntas con al menos una falta de ortografía
+        preguntas = df['pregunta'].tolist()
+        preguntas_unicas = set(preguntas)
+        num_preguntas_repetidas = len(preguntas) - len(preguntas_unicas)
+
+        fig_colA, fig_colB = st.columns(2)
+        with fig_colA:
+            st.markdown('### Anàlisis General')
+            st.markdown("##### # de consultes:**" + str(len(df.index)) + "**")
+            st.markdown("##### # de consultes NO vàlides (<2 paraules incloent salutacions):**" + str(
+                num_preguntas_cortas) + "**" + "-" + str(round((num_preguntas_cortas / len(df.index)) * 100, 1)) + "%")
+            st.markdown("##### # de consultes repetides:" + str(num_preguntas_repetidas))
+            
         fig_col1, fig_col2 = st.columns(2)
 
         with fig_col1:
