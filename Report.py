@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 
-csv_file_path = 'egipto_informe_5.csv'
+csv_file_path = 'egipto_informe_9.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
@@ -164,7 +164,7 @@ if st.session_state.start_chat:
         with fig_colA:
             st.markdown('### Análisis General')
             st.markdown("##### # de consultas:**" + str(len(df.index)) + "**")
-            st.markdown("##### # de consultas NO válidas (<2 palabras):**" + str(num_preguntas_cortas) + "**" + "-" + str(round((num_preguntas_cortas / len(df.index)) * 100, 1)) + "%")
+            st.markdown("##### # de consultas NO válidas (<2 palabras   ):**" + str(num_preguntas_cortas) + "**" + "-" + str(round((num_preguntas_cortas / len(df.index)) * 100, 1)) + "%")
             st.markdown("##### # de consultas repetidas:" + str(num_preguntas_repetidas))
 
         fig_col1, fig_col2 = st.columns(2)
