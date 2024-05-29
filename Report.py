@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 
-csv_file_path = 'egipto_informe_9.csv'
+csv_file_path = 'egipto_informe_19.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
