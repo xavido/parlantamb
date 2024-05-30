@@ -71,19 +71,19 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Este usuario no existe]")
         if nom in l2:
-            especials = "Answer always in spanish."
+            especials = "Answer always in spanish.Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child. "
         if nom in l3:
-            especials3 = "Gives answers only about art in Ancient Egypt.Find the answer especially in the context of ART IN ANCIENT EGYPT: painting and sculpture."
+            especials3 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and only about art in Ancient Egypt.Find the answer especially in the context of ART IN ANCIENT EGYPT: painting and sculpture."
         if nom in l4:
-            especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  EGYPTIAN WRITING: hieroglyphs and alphabet."
+            especials4 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  EGYPTIAN WRITING: hieroglyphs and alphabet."
         if nom in l5:
-            especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  Sarcophagi, mummies and mummification."
+            especials5 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  Sarcophagi, mummies and mummification."
         if nom in l6:
-            especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer especially in the context of BELIEFS and objects buried in the pyramids."
+            especials6 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about believes in Ancient Egypt.Find the answer especially in the context of BELIEFS and objects buried in the pyramids."
         if nom in l7:
-            especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
+            especials7 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
         if nom in l8:
-            especials8 = "Gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+            especials8 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
 
 
 def enable():
@@ -102,19 +102,19 @@ with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escribe tu identificación 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Chat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l2:
-      especials = "Answer always in spanish."
+      especials = "Answer always in spanish.Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child. "
   if nom in l3:
-      especials3 = "Gives answers only about art in Ancient Egypt.Find the answer especially in the context of ART IN ANCIENT EGYPT: painting and sculpture."
+      especials3 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and only about art in Ancient Egypt.Find the answer especially in the context of ART IN ANCIENT EGYPT: painting and sculpture."
   if nom in l4:
-      especials4 = "Gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  EGYPTIAN WRITING: hieroglyphs and alphabet."
+      especials4 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about writing in Ancient Egypt.Find the answer especially in the context of  EGYPTIAN WRITING: hieroglyphs and alphabet."
   if nom in l5:
-      especials5 = "Gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  Sarcophagi, mummies and mummification."
+      especials5 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about Mummies in Ancient Egypt.Find the answer especially in the context of  Sarcophagi, mummies and mummification."
   if nom in l6:
-      especials6 = "Gives answers only about believes in Ancient Egypt.Find the answer especially in the context of BELIEFS and objects buried in the pyramids."
+      especials6 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about believes in Ancient Egypt.Find the answer especially in the context of BELIEFS and objects buried in the pyramids."
   if nom in l7:
-      especials7 = "Gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
+      especials7 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
   if nom in l8:
-      especials8 = "Gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+      especials8 = "Give short answers, no more than 3 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
@@ -132,7 +132,7 @@ st.sidebar.button("Salir del Chat",on_click=enable)
 if st.session_state.start_chat:
 
     if "openai_model" not in st.session_state:
-        st.session_state.openai_model = "gpt-4-1106-preview"
+        st.session_state.openai_model = "gpt-4o"
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
