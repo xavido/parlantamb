@@ -22,7 +22,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 client = openai
 count = 0
-
+st.cache_data.clear()
 csv_file_path = 'egipto_informe_99.csv'
 
 if os.path.exists(csv_file_path):
