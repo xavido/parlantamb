@@ -43,6 +43,7 @@ l5 = ['gmomias']
 l6 = ['gcreencias']
 l7 = ['gdioses']
 l8 = ['gsociedad']
+l9 = ['toni']
 
 # Disable the submit button after it is clicked
 
@@ -84,6 +85,8 @@ def disable():
             especials7 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
         if nom in l8:
             especials8 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+        if nom in l9:
+            especials9 = "Give short answers in catalan amb wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
 
 
 def enable():
@@ -115,6 +118,8 @@ with st.sidebar.form("usuari_form"):
       especials7 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives answers only about gods in Ancient Egypt.Find the answer especially in the context of MYTHOLOGY, the gods."
   if nom in l8:
       especials8 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
+  if nom in l9:
+      especials9 = "Give short answers in catalan amb wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
@@ -194,7 +199,7 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
-                time.sleep(10)
+                time.sleep(1)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -245,7 +250,7 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
-            time.sleep(10)
+            time.sleep(1)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
@@ -303,7 +308,7 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
-                time.sleep(10)
+                time.sleep(1)
                 st.image(response.data[0].url, caption=prompt)
                 resinfografria = requests.get(response.data[0].url)
 
@@ -355,7 +360,7 @@ if st.session_state.start_chat:
             nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
             count += 1
             response.stream_to_file(nomfitxer)
-            time.sleep(10)
+            time.sleep(1)
             with elaudio.container():
                 autoplay_audio(nomfitxer)
 
