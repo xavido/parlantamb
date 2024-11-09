@@ -14,7 +14,7 @@ db_name =  st.secrets["DB_NAME"]
 db_user =  st.secrets["DB_USER"]
 db_password =  st.secrets["DB_PASSWORD"]
 
-lesinstruccions="Te llamas Salima Ikram y eres la mejor egiptóloga que investiga los secretos del Antiguo Egipto. Contesta siempre en castellano y siendo muy amable y educada.Contesta únicamente preguntas relacionadas con el Antiguo Egipto y al final siempre indica que la información dada se tiene que validar con la profesora."
+lesinstruccions="Te llamas Salma Ikram y eres la mejor egiptóloga que investiga los secretos del Antiguo Egipto. Contesta siempre en castellano y en otros idiomas que te digo a continuación siendo muy amable y educada.Contesta únicamente preguntas relacionadas con el Antiguo Egipto y al final siempre indica que la información dada se tiene que validar con la profesora."
 especials=""
 especials3=""
 especials4=""
@@ -154,13 +154,13 @@ if st.session_state.start_chat:
         client.beta.threads.messages.create(
             thread_id=st.session_state.thread_id,
             role="user",
-            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7 + especials9
         )
 
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=assistant_id,
-            instructions=lesinstruccions + especials + especials3 + especials4
+            instructions=lesinstruccions + especials + especials3 + especials4 + especials9
         )
 
         while run.status != 'completed':
@@ -263,13 +263,13 @@ if st.session_state.start_chat:
         client.beta.threads.messages.create(
             thread_id=st.session_state.thread_id,
             role="user",
-            content=prompt+especials+especials3+especials4+especials5+especials6+especials7
+            content=prompt+especials+especials3+especials4+especials5+especials6+especials7+especials9
         )
 
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=assistant_id,
-            instructions=lesinstruccions+especials+especials3+especials4
+            instructions=lesinstruccions+especials+especials3+especials4+especials9
         )
 
         while run.status != 'completed':
