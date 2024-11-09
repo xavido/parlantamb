@@ -86,7 +86,7 @@ def disable():
         if nom in l8:
             especials8 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
         if nom in l9:
-            especials9 = "Give short answers in catalan amb wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
+            especials9 = "Give short answers in catalan and wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
 
 
 def enable():
@@ -119,7 +119,7 @@ with st.sidebar.form("usuari_form"):
   if nom in l8:
       especials8 = "Give short answers, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt.Find the answer especially in the context of organization of society in Ancient Egypt"
   if nom in l9:
-      especials9 = "Give short answers in catalan amb wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
+      especials9 = "Give short answers in catalan and wolof, no more than 2 lines,and as if you were explaining it to a 5 year old child and gives short answers (4 lines) only about society in Ancient Egypt."
 
   if submit_button and nom != '' and nom in l1:
         st.session_state.disabled = True
@@ -154,13 +154,15 @@ if st.session_state.start_chat:
         client.beta.threads.messages.create(
             thread_id=st.session_state.thread_id,
             role="user",
-            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7 + especials9
+            content=prompt + especials9
+            #content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7 + especials9
         )
 
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=assistant_id,
-            instructions=lesinstruccions + especials + especials3 + especials4 + especials9
+            #instructions=lesinstruccions + especials + especials3 + especials4 + especials9
+            instructions=lesinstruccions + especials9
         )
 
         while run.status != 'completed':
