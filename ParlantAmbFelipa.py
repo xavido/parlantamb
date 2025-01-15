@@ -202,16 +202,17 @@ if st.session_state.start_chat:
                     st.image(response.data[0].url, caption=prompt)
                     resinfografria = requests.get(response.data[0].url)
                     creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
+                    with open(creaName, 'wb') as f:
+                        f.write(resinfografria.content)
 
-                with open(creaName, 'wb') as f:
-                    f.write(resinfografria.content)
+                    ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                    file = open(creaName, 'rb')  # file to send
+                    # Read file in binary mode
+                    ftp_server.storbinary('STOR ' + creaName, file)
+                    ftp_server.quit()
+                    file.close()  # close file and FTP
 
-                ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                file = open(creaName, 'rb')  # file to send
-                # Read file in binary mode
-                ftp_server.storbinary('STOR ' + creaName, file)
-                ftp_server.quit()
-                file.close()  # close file and FTP
+
                 # if (resposta.find('sociedad')):
                 #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
 
@@ -301,19 +302,20 @@ if st.session_state.start_chat:
                     st.image(response.data[0].url, caption=prompt)
                     resinfografria = requests.get(response.data[0].url)
                     creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
+                    with open(creaName, 'wb') as f:
+                        f.write(resinfografria.content)
+
+                    ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                    file = open(creaName, 'rb')  # file to send
+                    # Read file in binary mode
+                    ftp_server.storbinary('STOR ' + creaName, file)
+                    ftp_server.quit()
+                    file.close()  # close file and FTP
 
                 #time.sleep(1)
 
 
-                with open(creaName, 'wb') as f:
-                    f.write(resinfografria.content)
 
-                ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                file = open(creaName, 'rb')  # file to send
-                # Read file in binary mode
-                ftp_server.storbinary('STOR ' + creaName, file)
-                ftp_server.quit()
-                file.close()  # close file and FTP
                 #if (resposta.find('sociedad')):
                 #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
 
