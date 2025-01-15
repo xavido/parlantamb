@@ -14,6 +14,8 @@ db_name =  st.secrets["DB_NAME"]
 db_user =  st.secrets["DB_USER"]
 db_password =  st.secrets["DB_PASSWORD"]
 
+creaName = ""
+
 lesinstruccions="Al final sempre indica que la informació l'has de calidar amb la profesora."
 #standar alt
 especials=""
