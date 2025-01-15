@@ -172,7 +172,7 @@ if st.session_state.start_chat:
         )
 
         while run.status != 'completed':
-            time.sleep(1)
+            #time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
                 run_id=run.id
@@ -199,11 +199,9 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
-                #time.sleep(1)
-                st.image(response.data[0].url, caption=prompt)
-                resinfografria = requests.get(response.data[0].url)
-
-                creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
+                    st.image(response.data[0].url, caption=prompt)
+                    resinfografria = requests.get(response.data[0].url)
+                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
 
                 with open(creaName, 'wb') as f:
                     f.write(resinfografria.content)
@@ -273,7 +271,7 @@ if st.session_state.start_chat:
         )
 
         while run.status != 'completed':
-            time.sleep(1)
+            #time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
                 run_id=run.id
@@ -300,12 +298,12 @@ if st.session_state.start_chat:
                         quality="standard",
                         n=1
                     )
+                    st.image(response.data[0].url, caption=prompt)
+                    resinfografria = requests.get(response.data[0].url)
+                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
 
                 #time.sleep(1)
-                st.image(response.data[0].url, caption=prompt)
-                resinfografria = requests.get(response.data[0].url)
 
-                creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
 
                 with open(creaName, 'wb') as f:
                     f.write(resinfografria.content)
