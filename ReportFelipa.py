@@ -196,7 +196,8 @@ if st.session_state.start_chat:
         st.markdown("### Dades Generals")
         st.dataframe(df,width=1800,column_order=("idc","pregunta","resposta"),column_config={"idc": "Usuari","pregunta":"Pregunta","resposta": "Resposta","id":None,"tema":None,"curso":None,})
         for i in range(len(df['infografia'])):
-            if len(str(df['infografia'][i])) > 2 :
+            if df['infografia'][i] !='':
+                st.warning(str(df['infografia'][i]), icon="⚠️")
                 df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
                 #st.write(df['infografia'][i])
                 listimages.append(str(df['infografia'][i]))
