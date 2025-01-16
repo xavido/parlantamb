@@ -198,7 +198,7 @@ if st.session_state.start_chat:
         for i in range(len(df['infografia'])):
             if str(df['infografia'][i]) !='':
                 df['infografia'][i] = "https://www.xavidominguez.com/tecla/"+str(df['infografia'][i])
-                #st.write(df['infografia'][i])
+                st.write(df['infografia'][i])
                 listimages.append(str(df['infografia'][i]))
                 listcaptions.append(df['pregunta'][i])
 
