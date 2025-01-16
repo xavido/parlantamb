@@ -147,7 +147,7 @@ st.sidebar.button("Sortir del Xat",on_click=enable)
 if st.session_state.start_chat:
 
     if "openai_model" not in st.session_state:
-        st.session_state.openai_model = "gpt-4o"
+        st.session_state.openai_model = "gpt-4o-mini"
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
