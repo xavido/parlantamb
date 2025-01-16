@@ -16,7 +16,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 creaName = "-"
 
-lesinstruccions="Al final sempre indica que la informació l'has de calidar amb la profesora."
+lesinstruccions="Al final sempre indica que la informació l'has de calidar amb la profesora. Contesta només preguntes del que ets experta."
 #standar alt
 especials=""
 #standar
