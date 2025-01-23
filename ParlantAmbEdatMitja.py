@@ -45,7 +45,7 @@ st.set_page_config(page_title="Parlant amb Luciana, científica i historiadora",
 openai.api_key = st.secrets["auto_pau"]
 
 # standar alt
-l1 = ['xdominguez', 'raquel','yolanda','samuel','chrislyn','jenniah','mon','bernardino','ivon','jeiroh','althea','argiel','kristina','jun','pietro','aylin']
+l1 = ['xdominguez','mireia','mavi','samuel','chrislyn','jenniah','mon','bernardino','ivon','jeiroh','althea','argiel','kristina','jun','pietro','aylin']
 # standar castella
 l2 = ['lazlo','alondra']
 #standar molt baix
