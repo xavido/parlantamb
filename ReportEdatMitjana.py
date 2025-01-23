@@ -188,8 +188,8 @@ if st.session_state.start_chat:
             conteo_preguntas.columns = ['Fecha', 'Número de Preguntas']
 
             # Crea el gráfico de columnas
-            fig = px.bar(conteo_preguntas, x='Data', y='Número de Preguntes',
-                         title='Número de Preguntes por Data')
+            fig = px.bar(conteo_preguntas, x='Fecha', y='Número de Preguntas',
+                         title='Número de Preguntas por Fecha')
 
             st.write(fig)
 
