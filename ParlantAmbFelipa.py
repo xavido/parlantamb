@@ -228,9 +228,9 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema) VALUES (%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 202500)
+        valores = (nom, prompt, message.content[0].text.value, creaName, 202500,'PRI2','Castells i Sal')
         cur.execute(sql, valores)
 
         # Obtiene los resultados de la consulta
@@ -332,9 +332,9 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema) VALUES (%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 202500)
+        valores = (nom, prompt, message.content[0].text.value, creaName, 202500,'PRI2','Castells i Sal')
         cur.execute(sql, valores)
 
         # Obtiene los resultados de la consulta
