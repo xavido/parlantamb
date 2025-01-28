@@ -198,7 +198,7 @@ if st.session_state.start_chat:
                 if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
                     response = client.images.generate(
                         model="dall-e-3",
-                        prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta + ".",
+                        prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
                         size="1024x1024",
                         quality="standard",
                         n=1
