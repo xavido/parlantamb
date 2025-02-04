@@ -62,7 +62,6 @@ l7 = ['maghattass']
 l8 = ['']
 l9 = []
 
-# Disable the submit button after it is clicked
 
 def autoplay_audio(file_path: str):
     with open(file_path, "rb") as f:
@@ -139,6 +138,27 @@ with st.sidebar.form("usuari_form"):
         thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id
 
+# Simulamos que cada usuario tiene un tamaño de letra guardado
+if "font_size" not in st.session_state:
+    st.session_state["font_size"] = "16px"  # Tamaño por defecto
+
+if nom in l6:
+    font_size = "40px"
+
+st.session_state["font_size"] = font_size
+
+# Aplicamos CSS dinámico
+st.markdown(
+    f"""
+    <style>
+    body {{
+        font-size: {st.session_state["font_size"]};
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+# Disable the submit button after it is clicked
 
 st.title("Parlant amb...Florence")
 st.write("Soc científica, geòloga i experta en la Terra.")
