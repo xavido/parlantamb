@@ -141,7 +141,7 @@ with st.sidebar.form("usuari_form"):
 
 
 st.title("Parlant amb...Florence")
-st.write("Soc científica, geòlogia i experta en la Terra.")
+st.write("Soc científica, geòloga i experta en la Terra.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
