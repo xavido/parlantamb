@@ -59,7 +59,7 @@ l6 = ['aallouche']
 # standar molt baix, imatge, audio i arab magrabí
 l7 = ['maghattass']
 # standar alt, imatge, audio i lletra gran
-l8 = ['']
+l8 = []
 l9 = []
 
 
