@@ -93,7 +93,7 @@ else:
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower():
             image_response = client.images.generate(
                 model="dall-e-3",
-                prompt=f"Un dibuix realista d'un ocell en base a aquesta descripció: {prompt}",
+                prompt=f"Una imatge realista d'un ocell en base a aquesta descripció: {prompt}",
                 size="1024x1024",
                 n=1
             )
