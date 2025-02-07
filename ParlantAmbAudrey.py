@@ -25,8 +25,7 @@ def apply_custom_styles():
             font-size: %s;
         }
         .stApp {
-            background-image: url('https://img.freepik.com/free-vector/hand-drawn-birds-background_23-2148778033.jpg');
-            background-size: cover;
+            
         }
         </style>
     """ % ESTUDIANTS.get(st.session_state.get('usuari', ''), {}).get('font_size', '16px'), unsafe_allow_html=True)
