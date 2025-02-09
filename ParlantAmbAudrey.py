@@ -48,19 +48,19 @@ st.set_page_config(page_title="Parlant amb Audrey, científica i ornitòloga exp
 openai.api_key = st.secrets["auto_pau"]
 
 # standar alt
-l1 = ['xdominguez', 'bea','mariana']
-# standar i imatge
-l2 = ['aiqbal']
-#standar i audio
-l3 = ['sbolaños']
-# standar imatge i audio
-l4 = ['akamran','imubeen','anavarro']
-# standar baix, imatge, audio
-l5 = ['dhossain','amuneeb','fmuneeb','zmuneeb','azhaira','hrasool']
+l1 = ['xdominguez', 'bea','mariana','earias','ybenlouadi','bchairi','aflores','bimedadze','lkumar','rmoncada','esanchez','tshahzad']
+# standar
+l2 = ['scano','vcoello','zdass','mgaouta','tessayeh','skhaddour']
+#standar baix
+l3 = ['sabed','rbourada','didugboe','icisneros']
+# standar molt baix, imatge i audio
+l4 = ['scasariego','nmoreno','ptricolici','hzheng']
+# standar alt , imatge, audio
+l5 = []
 # standar alt, imatge, audio i lletra gran
-l6 = ['aallouche']
-# standar molt baix, imatge, audio i arab magrabí
-l7 = ['maghattass']
+l6 = []
+# standar alt i castella
+l7 = ['rmoncada']
 # standar alt, imatge, audio i lletra gran
 l8 = []
 l9 = []
@@ -94,15 +94,15 @@ def disable():
         if nom in l2:
             especials3 = "Contesta sempre amb 2 paràgrafs."
         if nom in l3:
-            especials6="Contesta sempre amb 2 paràgrafs."
+            especials6="Contesta sempre amb 1 paràgrafs."
         if nom in l4:
-            especials7="Contesta sempre amb 2 paràgrafs."
+            especials7="Contesta sempre amb 3 frases."
         if nom in l5:
             especials4="Contesta sempre amb 1 paràgraf."
         if nom in l6:
             especials4 = "Contesta sempre amb 3 paràgrafs."
         if nom in l7:
-            especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
+            especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
 
 def enable():
     if "disabled" in st.session_state and st.session_state.disabled == True:
@@ -124,15 +124,15 @@ with st.sidebar.form("usuari_form"):
   if nom in l2:
       especials3 = "Contesta sempre amb 2 paràgrafs."
   if nom in l3:
-      especials6 = "Contesta sempre amb 2 paràgrafs."
+      especials6 = "Contesta sempre amb 1 paràgraf."
   if nom in l4:
-      especials7 = "Contesta sempre amb 2 paràgrafs."
+      especials7 = "Contesta sempre amb 3 frases."
   if nom in l5:
       especials4 = "Contesta sempre amb 1 paràgraf."
   if nom in l6:
       especials4 = "Contesta sempre amb 3 paràgrafs."
   if nom in l7:
-      especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
+      especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
 
   if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
         st.session_state.disabled = True
@@ -272,7 +272,7 @@ if st.session_state.start_chat:
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
-                    if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
+                    if nom in l4:
                         response = client.images.generate(
                             model="dall-e-3",
                             prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
@@ -314,7 +314,7 @@ if st.session_state.start_chat:
                         cur.close()
                         conn.close()
 
-                        if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
+                        if nom in l4:
                             response = ''
                             response = client.audio.speech.create(
                                 model="tts-1",
