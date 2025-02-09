@@ -160,8 +160,8 @@ st.markdown(
 )
 # Disable the submit button after it is clicked
 
-st.title("Parlant amb...Florence")
-st.write("Soc científica, geòloga i experta en la Terra.")
+st.title("Parlant amb...Audrey")
+st.write("Soc científica, ornitòloga i experta en ocells de Catalunya.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
