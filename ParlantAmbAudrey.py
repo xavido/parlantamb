@@ -6,6 +6,9 @@ import base64
 import requests
 import ftplib
 from streamlit_mic_recorder import mic_recorder,speech_to_text
+from PIL import Image
+from io import BytesIO
+
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
@@ -196,6 +199,10 @@ if st.session_state.start_chat:
                     quality="standard",
                     n=1
                 )
+                # Desa la imatge a la sessió amb un format compatible
+                img = Image.open(BytesIO(response.data[0].url))
+
+                st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
                 st.image(response.data[0].url, caption=prompt)
             resinfografria = requests.get(response.data[0].url)
             creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
