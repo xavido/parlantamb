@@ -182,6 +182,11 @@ if st.session_state.start_chat:
         with st.chat_message("user"):
             st.markdown(prompt)
 
+    if prompt := st.chat_input("Escriu aquí la teva pregunta") :
+
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower():
             response = client.images.generate(
                 model="dall-e-3",
@@ -202,105 +207,59 @@ if st.session_state.start_chat:
             ftp_server.storbinary('STOR ' + creaName, file)
             ftp_server.quit()
             file.close()  # close file and FTP
-
         else:
-            file.close() 
-
-        # Crea una conexión con la base de datos
-        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
-                                       password=db_password)
-
-        # Crea un cursor para ejecutar comandos SQL
-        cur = conn.cursor()
-
-        # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-
-        valores = (nom, prompt, message.content[0].text.value, creaName, 2025434343,'PRI2','Ocells')
-        cur.execute(sql, valores)
-
-        # Obtiene los resultados de la consulta
-        results_database = cur.fetchall()
-        conn.commit()
-
-        # Cierra la conexión con la base de datos
-        cur.close()
-        conn.close()
-
-        if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
-            response = ''
-            response = client.audio.speech.create(
-                model="tts-1",
-                voice="alloy",
-                input=message.content[0].text.value,
-            )
-            # response = message.content[0].text.value
-            elaudio = st.empty()
-            nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
-            count += 1
-            response.stream_to_file(nomfitxer)
-            #time.sleep(1)
-            with elaudio.container():
-                autoplay_audio(nomfitxer)
-
-    if prompt := st.chat_input("Escriu aquí la teva pregunta") :
-
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        client.beta.threads.messages.create(
-            thread_id=st.session_state.thread_id,
-            role="user",
-            content=prompt+especials+especials3+especials4+especials5+especials6+especials7
-        )
-
-        run = client.beta.threads.runs.create(
-            thread_id=st.session_state.thread_id,
-            assistant_id=assistant_id,
-            instructions=lesinstruccions+especials+especials3+especials4+especials5+especials6+especials7
-        )
-
-        while run.status != 'completed':
-            #time.sleep(1)
-            run = client.beta.threads.runs.retrieve(
+            client.beta.threads.messages.create(
                 thread_id=st.session_state.thread_id,
-                run_id=run.id
+                role="user",
+                content=prompt+especials+especials3+especials4+especials5+especials6+especials7
             )
-        messages = client.beta.threads.messages.list(
-            thread_id=st.session_state.thread_id
-        )
 
-        # Process and display assistant messages
-        assistant_messages_for_run = [
-            message for message in messages
-            if message.run_id == run.id and message.role == "assistant"
-        ]
-        for message in assistant_messages_for_run:
-            st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
-            with st.chat_message("assistant"):
-                resposta = message.content[0].text.value
-                st.markdown(message.content[0].text.value)
-                if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                    st.image(response.data[0].url, caption=prompt)
-                    resinfografria = requests.get(response.data[0].url)
-                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
-                    with open(creaName, 'wb') as f:
-                        f.write(resinfografria.content)
+            run = client.beta.threads.runs.create(
+                thread_id=st.session_state.thread_id,
+                assistant_id=assistant_id,
+                instructions=lesinstruccions+especials+especials3+especials4+especials5+especials6+especials7
+            )
 
-                    ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                    file = open(creaName, 'rb')  # file to send
-                    # Read file in binary mode
-                    ftp_server.storbinary('STOR ' + creaName, file)
-                    ftp_server.quit()
-                    file.close()  # close file and FTP
+            while run.status != 'completed':
+                #time.sleep(1)
+                run = client.beta.threads.runs.retrieve(
+                    thread_id=st.session_state.thread_id,
+                    run_id=run.id
+                )
+            messages = client.beta.threads.messages.list(
+                thread_id=st.session_state.thread_id
+            )
+
+            # Process and display assistant messages
+            assistant_messages_for_run = [
+                message for message in messages
+                if message.run_id == run.id and message.role == "assistant"
+            ]
+            for message in assistant_messages_for_run:
+                st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
+                with st.chat_message("assistant"):
+                    resposta = message.content[0].text.value
+                    st.markdown(message.content[0].text.value)
+                    if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
+                        response = client.images.generate(
+                            model="dall-e-3",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                            size="1024x1024",
+                            quality="standard",
+                            n=1
+                        )
+                        st.image(response.data[0].url, caption=prompt)
+                        resinfografria = requests.get(response.data[0].url)
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
+                        with open(creaName, 'wb') as f:
+                            f.write(resinfografria.content)
+
+                        ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                        file = open(creaName, 'rb')  # file to send
+                        # Read file in binary mode
+                        ftp_server.storbinary('STOR ' + creaName, file)
+                        ftp_server.quit()
+                        file.close()  # close file and FTP
 
                 #time.sleep(1)
 
