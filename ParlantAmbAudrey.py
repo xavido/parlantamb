@@ -204,6 +204,7 @@ if st.session_state.start_chat:
                 img = Image.open(BytesIO(image_data.content))
 
                 st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
+                st.markdown(img)
                 st.image(response.data[0].url, caption=prompt)
             resinfografria = requests.get(response.data[0].url)
             creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
