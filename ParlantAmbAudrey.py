@@ -204,64 +204,7 @@ if st.session_state.start_chat:
             file.close()  # close file and FTP
 
         else:
-            client.beta.threads.messages.create(
-                thread_id=st.session_state.thread_id,
-                role="user",
-                #content=prompt + especials9
-                content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
-            )
-
-            run = client.beta.threads.runs.create(
-                thread_id=st.session_state.thread_id,
-                assistant_id=assistant_id,
-                instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7
-                #instructions=lesinstruccions + especials9
-            )
-
-            while run.status != 'completed':
-                #time.sleep(1)
-                run = client.beta.threads.runs.retrieve(
-                    thread_id=st.session_state.thread_id,
-                    run_id=run.id
-                )
-            messages = client.beta.threads.messages.list(
-                thread_id=st.session_state.thread_id
-            )
-
-            # Process and display assistant messages
-            assistant_messages_for_run = [
-                message for message in messages
-                if message.run_id == run.id and message.role == "assistant"
-            ]
-            for message in assistant_messages_for_run:
-                st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
-                with st.chat_message("assistant"):
-                    resposta = message.content[0].text.value
-                    st.markdown(message.content[0].text.value)
-                    if nom in l2 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
-                        response = client.images.generate(
-                            model="dall-e-3",
-                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
-                            size="1024x1024",
-                            quality="standard",
-                            n=1
-                        )
-                        st.image(response.data[0].url, caption=prompt)
-                        resinfografria = requests.get(response.data[0].url)
-                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
-                        with open(creaName, 'wb') as f:
-                            f.write(resinfografria.content)
-
-                        ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                        file = open(creaName, 'rb')  # file to send
-                        # Read file in binary mode
-                        ftp_server.storbinary('STOR ' + creaName, file)
-                        ftp_server.quit()
-                        file.close()  # close file and FTP
-
-
-                    # if (resposta.find('sociedad')):
-                    #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+            file.close() 
 
         # Crea una conexión con la base de datos
         conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
