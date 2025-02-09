@@ -185,7 +185,7 @@ if st.session_state.start_chat:
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower() or "fotografia" in prompt.lower():
             response = client.images.generate(
                 model="dall-e-3",
-                prompt="Genera imagen a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                prompt="Genera imagen a partir de esta descripción y sin saltarse los filtros éticos:" + response + ".",
                 size="1024x1024",
                 quality="standard",
                 n=1
@@ -235,12 +235,12 @@ if st.session_state.start_chat:
             for message in assistant_messages_for_run:
                 st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
                 with st.chat_message("assistant"):
-                    resposta = message.content[0].text.value
+                    response = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
                     if nom in l2 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
                         response = client.images.generate(
                             model="dall-e-3",
-                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + response + ".",
                             size="1024x1024",
                             quality="standard",
                             n=1
@@ -270,7 +270,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, response,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
         valores = (nom, prompt, message.content[0].text.value, creaName, 2025434343,'PRI2','Ocells')
         cur.execute(sql, valores)
@@ -308,7 +308,7 @@ if st.session_state.start_chat:
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower() or "fotografia" in prompt.lower():
             response = client.images.generate(
                 model="dall-e-3",
-                prompt="Genera imagen a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                prompt="Genera imagen a partir de esta descripción y sin saltarse los filtros éticos:" + response + ".",
                 size="1024x1024",
                 quality="standard",
                 n=1
@@ -356,12 +356,12 @@ if st.session_state.start_chat:
             for message in assistant_messages_for_run:
                 st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
                 with st.chat_message("assistant"):
-                    resposta = message.content[0].text.value
+                    response = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
                     if nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
                         response = client.images.generate(
                             model="dall-e-3",
-                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + response + ".",
                             size="1024x1024",
                             quality="standard",
                             n=1
@@ -395,7 +395,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, response,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
         valores = (nom, prompt, message.content[0].text.value, creaName, 2025434343,'PRI2','Ocells')
         cur.execute(sql, valores)
