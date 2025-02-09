@@ -185,7 +185,7 @@ if st.session_state.start_chat:
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower():
             response = client.images.generate(
                 model="dall-e-3",
-                prompt=f"Una imatge realista d'un ocell en base a aquesta descripció: {prompt} .",
+                prompt=f"Una imatge d'un ocell en base a aquesta descripció: {prompt} .",
                 size="1024x1024",
                 quality="standard",
                 n=1
@@ -241,7 +241,7 @@ if st.session_state.start_chat:
                     if nom in l2 or nom in l4 or nom in l5 or nom in l6 or nom in l7:
                         response = client.images.generate(
                             model="dall-e-3",
-                            prompt=f"Una imatge realista d'un ocell en base a aquesta descripció: {prompt} .",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
                             size="1024x1024",
                             quality="standard",
                             n=1
