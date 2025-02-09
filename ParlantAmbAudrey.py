@@ -203,8 +203,8 @@ if st.session_state.start_chat:
                 image_data = requests.get(response.data[0].url)
                 img = Image.open(BytesIO(image_data.content))
 
-                st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
-                st.session_state["messages"].append({"role": "assistant", "content": image_data, "type": "image"})
+                #st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
+                st.session_state["messages"].append({"role": "assistant", "content": response.data[0].url, "type": "image"})
                 st.image(response.data[0].url, caption=prompt)
 
 
