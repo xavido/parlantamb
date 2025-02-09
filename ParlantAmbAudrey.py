@@ -189,14 +189,14 @@ if st.session_state.start_chat:
             st.markdown(prompt)
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower()  or "foto" in prompt.lower() or "fotografia" in prompt.lower():
             with st.chat_message("assistant"):
-            response = client.images.generate(
-                model="dall-e-3",
-                prompt=f"Una imatge d'un ocell en base a aquesta descripció: {prompt} .",
-                size="1024x1024",
-                quality="standard",
-                n=1
-            )
-            st.image(response.data[0].url, caption=prompt)
+                response = client.images.generate(
+                    model="dall-e-3",
+                    prompt=f"Una imatge d'un ocell en base a aquesta descripció: {prompt} .",
+                    size="1024x1024",
+                    quality="standard",
+                    n=1
+                )
+                st.image(response.data[0].url, caption=prompt)
             resinfografria = requests.get(response.data[0].url)
             creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
             with open(creaName, 'wb') as f:
