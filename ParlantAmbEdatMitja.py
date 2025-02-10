@@ -124,17 +124,17 @@ with st.sidebar.form("usuari_form"):
   if nom in l2:
       especials3 = "Contesta sempre amb 1 paràgraf. Repeteix la resposta també amb l'idioma castellà."
   if nom in l3:
-      especials6 = "Contesta sempre amb un màxim de 3 frases."
+      especials6 = "Contesta sempre amb 3 frases curtes."
   if nom in l4:
       especials7 = "Contesta sempre amb un màxim de 1 frase. Repeteix la resposta també amb l'idioma urdú."
   if nom in l5:
-      especials4 = "Contesta sempre amb una frase."
+      especials4 = "Contesta sempre amb una frase curta."
   if nom in l6:
-      especials4 = "Contesta sempre amb una frase."
+      especials4 = "Contesta sempre amb una frase curta."
   if nom in l7:
-      especials5 = "Contesta sempre amb un màxim de 1 frase.Repeteix la resposta també amb l'idioma castellà."
+      especials5 = "Contesta sempre amb una frase curta.Repeteix la resposta també amb l'idioma castellà."
   if nom in l8:
-      especials8 = "Contesta sempre amb un màxim de 1 paràgraf."
+      especials8 = "Contesta sempre amb un paràgraf."
 
   if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7 or nom in l8):
         st.session_state.disabled = True
