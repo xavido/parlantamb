@@ -44,21 +44,22 @@ st.set_page_config(page_title="Parlant amb Luciana, científica i historiadora",
 
 openai.api_key = st.secrets["auto_pau"]
 
-# standar alt
-l1 = ['xdominguez','mireia','mavi','samuel','chrislyn','jenniah','mon','bernardino','ivon','jeiroh','althea','argiel','kristina','jun','pietro','aylin']
-# standar castella
-l2 = ['lazlo','alondra']
-#standar molt baix
-l3 = ['mikail','lawrence','kate','matias','zean']
-# standar molt baix urdu
+# standar
+l1 = ['xdominguez','mireia','mavi','bernardino','ivon','jeiroh','jun','pietro','aylin']
+# standar baix - castella
+l2 = ['lazlo']
+#standar molt baix - 3 frases
+l3 = ['samuel','mon','lawrence','kate','althea','matias','zean']
+# standar extra baix urdu
 l4 = ['zimal']
 # standar extra baix, imatge, audio
 l5 = ['jerome']
-# standar baix imatge
-l6 = []
-# standar molt baix audio imatge
-l7 = []
-l8 = []
+# standar extra baix - 1 frase
+l6 = ['mikail']
+# standar extra baix - 1 frase i castellà
+l7 = ['alondra']
+#standar baix
+l8 = ['chrislyn','jenniah','argiel','kristina']
 l9 = []
 
 # Disable the submit button after it is clicked
@@ -100,6 +101,8 @@ def disable():
             especials4 = ""
         if nom in l7:
             especials5 = ""
+        if nom in l8:
+            especials8 = ""
 
 def enable():
     if "disabled" in st.session_state and st.session_state.disabled == True:
@@ -117,21 +120,23 @@ with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escriu la teva identificació 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l1:
-      especials = "Contesta sempre amb 3 paràgrafs."
+      especials = "Contesta sempre amb 2 paràgrafs."
   if nom in l2:
-      especials3 = "Contesta sempre amb 2 paràgrafs. Repeteix la resposta també amb l'idioma castellà."
+      especials3 = "Contesta sempre amb 1 paràgraf. Repeteix la resposta també amb l'idioma castellà."
   if nom in l3:
       especials6 = "Contesta sempre amb un màxim de 3 frases."
   if nom in l4:
-      especials7 = "Contesta sempre amb un màxim de 3 frases. Repeteix la resposta també amb l'idioma urdú."
+      especials7 = "Contesta sempre amb un màxim de 1 frase. Repeteix la resposta també amb l'idioma urdú."
   if nom in l5:
-      especials4 = "Contesta sempre amb 1 frase."
+      especials4 = "Contesta sempre amb un màxim de 1 frase."
   if nom in l6:
-      especials4 = ""
+      especials4 = "Contesta sempre amb un màxim de 1 frase."
   if nom in l7:
-      especials5 = ""
+      especials5 = "Contesta sempre amb un màxim de 1 frase.Repeteix la resposta també amb l'idioma castellà."
+  if nom in l8:
+      especials8 = "Contesta sempre amb un màxim de 1 paràgraf."
 
-  if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
+  if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7 or nom in l8):
         st.session_state.disabled = True
         st.session_state.start_chat = True
         st.session_state.disabled = True
@@ -165,13 +170,13 @@ if st.session_state.start_chat:
             thread_id=st.session_state.thread_id,
             role="user",
             #content=prompt + especials9
-            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7 + especials8
         )
 
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=assistant_id,
-            instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7 + especials8
             #instructions=lesinstruccions + especials9
         )
 
@@ -266,13 +271,13 @@ if st.session_state.start_chat:
         client.beta.threads.messages.create(
             thread_id=st.session_state.thread_id,
             role="user",
-            content=prompt+especials+especials3+especials4+especials5+especials6+especials7
+            content=prompt+especials+especials3+especials4+especials5+especials6+especials7+especials8
         )
 
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=assistant_id,
-            instructions=lesinstruccions+especials+especials3+especials4+especials5+especials6+especials7
+            instructions=lesinstruccions+especials+especials3+especials4+especials5+especials6+especials7+especials8
         )
 
         while run.status != 'completed':
