@@ -260,41 +260,41 @@ if st.session_state.start_chat:
                         file.close()  # close file and FTP
 
                         # Crea una conexión con la base de datos
-                        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+                    conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
                                                        password=db_password)
 
                         # Crea un cursor para ejecutar comandos SQL
-                        cur = conn.cursor()
+                    cur = conn.cursor()
 
                         # Ejecuta una consulta SQL
-                        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+                    sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025999999991, 'PRI2', 'Màquines Simples')
-                        cur.execute(sql, valores)
+                    valores = (nom, prompt, message.content[0].text.value, creaName, 2025999999991, 'PRI2','Màquines Simples')
+                    cur.execute(sql, valores)
 
                         # Obtiene los resultados de la consulta
-                        results_database = cur.fetchall()
-                        conn.commit()
+                    results_database = cur.fetchall()
+                    conn.commit()
 
                         # Cierra la conexión con la base de datos
-                        cur.close()
-                        conn.close()
+                    cur.close()
+                    conn.close()
 
-                        if nom in l4:
-                            response = ''
-                            response = client.audio.speech.create(
-                                model="tts-1",
-                                voice="alloy",
-                                input=message.content[0].text.value,
-                            )
-                            # response = message.content[0].text.value
-                            elaudio = st.empty()
-                            nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
-                            count += 1
-                            response.stream_to_file(nomfitxer)
-                            # time.sleep(1)
-                            with elaudio.container():
-                                autoplay_audio(nomfitxer)
+                if nom in l4:
+                    response = ''
+                    response = client.audio.speech.create(
+                        model="tts-1",
+                        voice="alloy",
+                        input=message.content[0].text.value,
+                    )
+                    # response = message.content[0].text.value
+                    elaudio = st.empty()
+                    nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
+                    count += 1
+                    response.stream_to_file(nomfitxer)
+                    # time.sleep(1)
+                    with elaudio.container():
+                        autoplay_audio(nomfitxer)
 
 else:
     st.write("Afegeix les teves dades y clicka a 'Iniciar Xat'.")
