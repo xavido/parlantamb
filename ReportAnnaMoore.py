@@ -39,10 +39,8 @@ st.set_page_config(page_title="Informe sobre la investigació alumnes de les mà
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'dyumi']
-lc = ['arehman','dbatista','ccastillo','alasurashvili','dmajdoub','aelahyani','egonçalves',
-'fgueye','sjaved','mkaur','imerino','ynawaz','kpacheco','zrehman','yrivera','jsaavedra','asegura','dsena','asingh',
-'rtrinidad','iyucra','czambrana','djimenez','mbarahona']
+l1 = ['xdominguez','mmorel','rlull']
+lc = ['ccherrez','gcuanqui','bgutierrez','jmedrano','jpacheco','cmejia','lalmanza','hcayo','agarcia','lmorales','dquezada','ssalinas','gsantana','zasghar','ajaved','hkaur','esingh','ssouza','cuzoho','aenciso','bgomez','rparedes','jperez']
 listcaptions =[]
 listimages = []
 # Disable the submit button after it is clicked
