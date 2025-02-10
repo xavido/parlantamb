@@ -128,9 +128,9 @@ with st.sidebar.form("usuari_form"):
   if nom in l4:
       especials7 = "Contesta sempre amb un màxim de 1 frase. Repeteix la resposta també amb l'idioma urdú."
   if nom in l5:
-      especials4 = "Contesta sempre amb un màxim de 1 frase."
+      especials4 = "Contesta sempre amb una frase."
   if nom in l6:
-      especials4 = "Contesta sempre amb un màxim de 1 frase."
+      especials4 = "Contesta sempre amb una frase."
   if nom in l7:
       especials5 = "Contesta sempre amb un màxim de 1 frase.Repeteix la resposta també amb l'idioma castellà."
   if nom in l8:
