@@ -14,7 +14,7 @@ db_name =  st.secrets["DB_NAME"]
 db_user =  st.secrets["DB_USER"]
 db_password =  st.secrets["DB_PASSWORD"]
 
-lesinstruccions="Et dius Anna moore i ets una de les inventores més important del món experta en màquines simples. Contesta sempre en català sent molt amable i educada.Contesta unicament preguntes relacionades amb màquines simples i al final sempre indica que la informació s'ha de validar amb la professora."
+lesinstruccions="Et dius Anna Moore i ets una assistent educativa experta en màquines simples, dissenyada per ajudar estudiants de primària a entendre conceptes clau de física i enginyeria d'una manera clara, atractiva i interactiva. Explores el funcionament i les aplicacions pràctiques de les màquines simples, com la palanca, la politja, el pla inclinat, la roda i l’eix, el cargol i la falca. Explicació de conceptes clau Explica què són les màquines simples i la seva importància en la vida quotidiana. Descriu cada màquina simple (palanca, politja, pla inclinat, roda i eix, cargol, falca) amb exemples pràctics. Diferencia màquines simples i màquines complexes. 🔹 Aplicacions pràctiques i exemples quotidians Relaciona cada màquina amb objectes i situacions del dia a dia (tisores, gronxadors, ascensors, bicicletes, etc.). Explica com es fan servir les màquines simples en l’enginyeria, el transport, la medicina i la indústria. 🔹 Activitats i experiments Suggeriments d'experiments senzills perquè els estudiants puguin explorar les màquines simples a casa o a l’aula. Exercicis de reflexió com 'Quina màquina simple creus que s’utilitza en una grua?' o 'Busca una màquina simple a casa teva i explica com funciona.' Contesta sempre en català sent molt amable i educada.Contesta unicament preguntes relacionades amb màquines simples i al final sempre indica que la informació s'ha de validar amb la profesora."
 especials=""
 especials3=""
 especials4=""
@@ -34,18 +34,18 @@ st.set_page_config(page_title="Parlant amb l'Ann Moore i les màquines simples",
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez','dyumi','arehman','dbatista','ccastillo','alasurashvili','dmajdoub','aelahyani','egonçalves',
-'fgueye','sjaved','mkaur','imerino','ynawaz','kpacheco','zrehman','yrivera','jsaavedra','asegura','dsena','asingh',
-'rtrinidad','iyucra','czambrana','djimenez','mbarahona']
-
-
-l2 = ['arehman','ccastillo','alasurashvili']
-l3 = ['arehman']
-l4 = ['alasurashvili']
-l5 = ['gmomias']
-l6 = ['gcreencias']
-l7 = ['gdioses']
-l8 = ['gsociedad']
+#standar alt
+l1 = ['xdominguez','mmorel','rlull','ccherrez','gcuanqui','bgutierrez','jmedrano','jpacheco','cmejia']
+#standar
+l2 = ['lalmanza','hcayo','agarcia','lmorales','dquezada','ssalinas','gsantana']
+#standar baix
+l3 = ['zasghar','ajaved','hkaur','esingh','ssouza','cuzoho']
+#standar baix audio
+l4 = ['aenciso','bgomez','rparedes','jperez']
+l5 = []
+l6 = []
+l7 = []
+l8 = []
 
 # Disable the submit button after it is clicked
 
@@ -64,7 +64,8 @@ def autoplay_audio(file_path: str):
         )
 
 def disable():
-    if nom != '' and nom in l1:
+    if nom != '' and (nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
+        especials = "Contesta sempre amb 3 paràgrafs."
         st.session_state.disabled = True
         st.session_state.start_chat = True
         st.session_state.disabled = True
@@ -72,21 +73,19 @@ def disable():
         st.session_state.thread_id = thread.id
     else:
         if nom != '':
-            st.sidebar.write(":red[Aquest usuari no existeix]")
+            st.sidebar.write(":red[Aquest/a usuari/a no existeix]")
         if nom in l2:
-            especials = "Answer always in catalan and 2 sentences."
+            especials3 = "Contesta sempre amb 2 paràgrafs."
         if nom in l3:
-            especials3 = "Gives answers in 2 sentences only about simple machines as if I were 5 years old in catalan and urdu."
+            especials6 = "Contesta sempre amb 1 paràgraf."
         if nom in l4:
-            especials4 = "Gives answers in 2 sentences only about simple machines as if I were 5 years old in catalan and georgian."
+            especials7 = "Contesta sempre amb 1 paràgraf."
         if nom in l5:
-            especials5 = "Gives answers only about simple machines as if I were 5 years old."
+            especials4 = "Contesta sempre amb 1 paràgraf."
         if nom in l6:
-            especials6 = "Gives answers only about simple machines as if I were 5 years old."
+            especials4 = "Contesta sempre amb 3 paràgrafs."
         if nom in l7:
-            especials7 = "Gives answers only about simple machines as if I were 5 years old."
-        if nom in l8:
-            especials8 = "Gives short answers (4 lines) only about simple machines as if I were 5 years old."
+            especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
 
 
 def enable():
@@ -104,12 +103,14 @@ if "disabled" not in st.session_state:
 with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escriu la teva identificació 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
+  if nom in l1:
+      especials = "Contesta sempre amb 3 paràgrafs."
   if nom in l2:
-      especials = "Answer always in catalan."
+      especials3 = "Contesta sempre amb 2 paràgrafs."
   if nom in l3:
-      especials3 = "Gives answers only about simple machines as if I were 5 years old."
+      especials6 = "Contesta sempre amb 1 paràgraf."
   if nom in l4:
-      especials4 ="Gives answers only about simple machines as if I were 5 years old."
+      especials7 = "Contesta sempre amb 1 pàragraf."
   if nom in l5:
       especials5 = "Gives answers only about simple machines as if I were 5 years old."
   if nom in l6:
@@ -135,7 +136,7 @@ st.sidebar.button("Sortir del Xat",on_click=enable)
 if st.session_state.start_chat:
 
     if "openai_model" not in st.session_state:
-        st.session_state.openai_model = "gpt-4-1106-preview"
+        st.session_state.openai_model = "gpt-4o-mini"
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
@@ -143,225 +144,157 @@ if st.session_state.start_chat:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-    if stt_user := speech_to_text(language='ca', start_prompt="Fes la pregunta amb veu",stop_prompt="Fi de pregunta",use_container_width=True, just_once=True, key='STT'):
+    if stt_user := speech_to_text(language='es', start_prompt="Fer pregunta amb veu", stop_prompt="Fi de la pregunta",
+                                  use_container_width=True, just_once=True, key='STT'):
         prompt = stt_user
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        client.beta.threads.messages.create(
-            thread_id=st.session_state.thread_id,
-            role="user",
-            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
-        )
-
-        run = client.beta.threads.runs.create(
-            thread_id=st.session_state.thread_id,
-            assistant_id=assistant_id,
-            instructions=lesinstruccions + especials + especials3 + especials4
-        )
-
-        while run.status != 'completed':
-            #time.sleep(1)
-            run = client.beta.threads.runs.retrieve(
-                thread_id=st.session_state.thread_id,
-                run_id=run.id
-            )
-        messages = client.beta.threads.messages.list(
-            thread_id=st.session_state.thread_id
-        )
-
-        # Process and display assistant messages
-        assistant_messages_for_run = [
-            message for message in messages
-            if message.run_id == run.id and message.role == "assistant"
-        ]
-        for message in assistant_messages_for_run:
-            st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
-            with st.chat_message("assistant"):
-                resposta = message.content[0].text.value
-                st.markdown(message.content[0].text.value)
-                if nom in l8:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista sobre máquinas simples y mecanismos:",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                else:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista sobre máquinas simples y mecanismos a partir de esta descripción y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta + ".",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                #time.sleep(10)
-                st.image(response.data[0].url, caption=prompt)
-                resinfografria = requests.get(response.data[0].url)
-
-                creaName = str(nom) + "_" + str(time.time()) + "_" + str(20000) + ".jpg"
-
-                with open(creaName, 'wb') as f:
-                    f.write(resinfografria.content)
-
-                ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                file = open(creaName, 'rb')  # file to send
-                # Read file in binary mode
-                ftp_server.storbinary('STOR ' + creaName, file)
-                ftp_server.quit()
-                file.close()  # close file and FTP
-                # if (resposta.find('sociedad')):
-                #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
-
-        # Crea una conexión con la base de datos
-        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
-                                       password=db_password)
-
-        # Crea un cursor para ejecutar comandos SQL
-        cur = conn.cursor()
-
-        # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema) VALUES (%s,%s,%s,%s,%s)"
-
-        valores = (nom, prompt, message.content[0].text.value, creaName, 90000)
-        cur.execute(sql, valores)
-
-        # Obtiene los resultados de la consulta
-        results_database = cur.fetchall()
-        conn.commit()
-
-        # Cierra la conexión con la base de datos
-        cur.close()
-        conn.close()
-
-        if nom in l1:
-            response = ''
-            response = client.audio.speech.create(
-                model="tts-1",
-                voice="alloy",
-                input=message.content[0].text.value,
-            )
-            # response = message.content[0].text.value
-            elaudio = st.empty()
-            nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
-            count += 1
-            response.stream_to_file(nomfitxer)
-            #time.sleep(10)
-            with elaudio.container():
-                autoplay_audio(nomfitxer)
-
-    if prompt := st.chat_input("Escriu la teva pregunta") :
+    if prompt := st.chat_input("Escriu aquí la teva pregunta"):
 
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
-
-        client.beta.threads.messages.create(
-            thread_id=st.session_state.thread_id,
-            role="user",
-            content=prompt+especials+especials3+especials4+especials5+especials6+especials7
-        )
-
-        run = client.beta.threads.runs.create(
-            thread_id=st.session_state.thread_id,
-            assistant_id=assistant_id,
-            instructions=lesinstruccions+especials+especials3+especials4
-        )
-
-        while run.status != 'completed':
-            #time.sleep(1)
-            run = client.beta.threads.runs.retrieve(
-                thread_id=st.session_state.thread_id,
-                run_id=run.id
-            )
-        messages = client.beta.threads.messages.list(
-            thread_id=st.session_state.thread_id
-        )
-
-        # Process and display assistant messages
-        assistant_messages_for_run = [
-            message for message in messages
-            if message.run_id == run.id and message.role == "assistant"
-        ]
-        for message in assistant_messages_for_run:
-            st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
+        if "imatge" in prompt.lower() or "dibuix" in prompt.lower() or "foto" in prompt.lower() or "fotografia" in prompt.lower():
             with st.chat_message("assistant"):
-                resposta = message.content[0].text.value
-                st.markdown(message.content[0].text.value)
-                if nom in l8:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista sobre máquinas simples y mecanismos:",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                else:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista sobre máquinas simples y mecanismos y sin saltarse los filtros éticos ya que la imagen es para niños:" + resposta+".",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                #time.sleep(10)
+                response = client.images.generate(
+                    model="dall-e-3",
+                    prompt=f"Una imatge en base a aquesta descripció: {prompt} .",
+                    size="1024x1024",
+                    quality="standard",
+                    n=1
+                )
+                # Desa la imatge a la sessió amb un format compatible
+                image_data = requests.get(response.data[0].url)
+                img = Image.open(BytesIO(image_data.content))
+
+                # st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
+                st.session_state["messages"].append(
+                    {"role": "assistant", "content": response.data[0].url, "type": "image"})
                 st.image(response.data[0].url, caption=prompt)
-                resinfografria = requests.get(response.data[0].url)
 
-                creaName = str(nom) + "_" + str(time.time()) + "_" + str(20000) + ".jpg"
+            resinfografria = requests.get(response.data[0].url)
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025999999991) + ".jpg"
+            with open(creaName, 'wb') as f:
+                f.write(resinfografria.content)
 
-                with open(creaName, 'wb') as f:
-                    f.write(resinfografria.content)
+            ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+            file = open(creaName, 'rb')  # file to send
+            # Read file in binary mode
+            ftp_server.storbinary('STOR ' + creaName, file)
+            ftp_server.quit()
+            file.close()  # close file and FTP
+            # Crea una conexión con la base de datos
+            conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+                                           password=db_password)
 
-                ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                file = open(creaName, 'rb')  # file to send
-                # Read file in binary mode
-                ftp_server.storbinary('STOR ' + creaName, file)
-                ftp_server.quit()
-                file.close()  # close file and FTP
-                #if (resposta.find('sociedad')):
-                #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+            # Crea un cursor para ejecutar comandos SQL
+            cur = conn.cursor()
 
+            # Ejecuta una consulta SQL
+            sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-# Crea una conexión con la base de datos
-        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+            valores = (nom, prompt, creaName, 2025999999991, 'PRI2', 'Màquines Simples')
+            cur.execute(sql, valores)
+
+            # Obtiene los resultados de la consulta
+            results_database = cur.fetchall()
+            conn.commit()
+
+            # Cierra la conexión con la base de datos
+            cur.close()
+            conn.close()
+        else:
+            client.beta.threads.messages.create(
+                thread_id=st.session_state.thread_id,
+                role="user",
+                content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            )
+
+            run = client.beta.threads.runs.create(
+                thread_id=st.session_state.thread_id,
+                assistant_id=assistant_id,
+                instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            )
+
+            while run.status != 'completed':
+                # time.sleep(1)
+                run = client.beta.threads.runs.retrieve(
+                    thread_id=st.session_state.thread_id,
+                    run_id=run.id
+                )
+            messages = client.beta.threads.messages.list(
+                thread_id=st.session_state.thread_id
+            )
+
+            # Process and display assistant messages
+            assistant_messages_for_run = [
+                message for message in messages
+                if message.run_id == run.id and message.role == "assistant"
+            ]
+            for message in assistant_messages_for_run:
+                st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
+                with st.chat_message("assistant"):
+                    resposta = message.content[0].text.value
+                    st.markdown(message.content[0].text.value)
+                    if nom in l4:
+                        response = client.images.generate(
+                            model="dall-e-3",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                            size="1024x1024",
+                            quality="standard",
+                            n=1
+                        )
+                        st.image(response.data[0].url, caption=prompt)
+                        resinfografria = requests.get(response.data[0].url)
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025999999991) + ".jpg"
+                        with open(creaName, 'wb') as f:
+                            f.write(resinfografria.content)
+
+                        ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                        file = open(creaName, 'rb')  # file to send
+                        # Read file in binary mode
+                        ftp_server.storbinary('STOR ' + creaName, file)
+                        ftp_server.quit()
+                        file.close()  # close file and FTP
+
+                        # Crea una conexión con la base de datos
+                        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
                                                        password=db_password)
 
-        # Crea un cursor para ejecutar comandos SQL
-        cur = conn.cursor()
+                        # Crea un cursor para ejecutar comandos SQL
+                        cur = conn.cursor()
 
-        # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema) VALUES (%s,%s,%s,%s,%s)"
+                        # Ejecuta una consulta SQL
+                        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 90000)
-        cur.execute(sql, valores)
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025999999991, 'PRI2', 'Màquines Simples')
+                        cur.execute(sql, valores)
 
-        # Obtiene los resultados de la consulta
-        results_database = cur.fetchall()
-        conn.commit()
+                        # Obtiene los resultados de la consulta
+                        results_database = cur.fetchall()
+                        conn.commit()
 
-        # Cierra la conexión con la base de datos
-        cur.close()
-        conn.close()
+                        # Cierra la conexión con la base de datos
+                        cur.close()
+                        conn.close()
 
-        if nom in l1:
-            response = ''
-            response = client.audio.speech.create(
-                model="tts-1",
-                voice="alloy",
-                input=message.content[0].text.value,
-            )
-            #response = message.content[0].text.value
-            elaudio = st.empty()
-            nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
-            count += 1
-            response.stream_to_file(nomfitxer)
-            #time.sleep(10)
-            with elaudio.container():
-                autoplay_audio(nomfitxer)
-
+                        if nom in l4:
+                            response = ''
+                            response = client.audio.speech.create(
+                                model="tts-1",
+                                voice="alloy",
+                                input=message.content[0].text.value,
+                            )
+                            # response = message.content[0].text.value
+                            elaudio = st.empty()
+                            nomfitxer = "output_" + str(count) + "_" + "_" + nom + "_.mp3"
+                            count += 1
+                            response.stream_to_file(nomfitxer)
+                            # time.sleep(1)
+                            with elaudio.container():
+                                autoplay_audio(nomfitxer)
 
 else:
     st.write("Afegeix les teves dades y clicka a 'Iniciar Xat'.")
