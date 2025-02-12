@@ -168,8 +168,6 @@ if st.session_state.start_chat:
                 )
                 # Desa la imatge a la sessió amb un format compatible
                 image_data = requests.get(response.data[0].url)
-                img = Image.open(BytesIO(image_data.content))
-
                 # st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
                 st.session_state["messages"].append(
                     {"role": "assistant", "content": response.data[0].url, "type": "image"})
