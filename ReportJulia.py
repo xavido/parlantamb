@@ -146,7 +146,7 @@ if st.session_state.start_chat:
         conn.close()
 
         # read csv from a URL
-        @st.experimental_memo
+        @st.cache_data
         def get_data() -> pd.DataFrame:
             return pd.read_csv(csv_file_path)
 
