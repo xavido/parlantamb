@@ -82,7 +82,7 @@ def autoplay_audio(file_path: str):
 
 def disable():
     if nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
-        especials = "Contesta sempre amb 1 paràgraf."
+        especials = "Contesta sempre amb 1 paràgraf de 3 línies."
         st.session_state.disabled = True
         st.session_state.start_chat = True
         st.session_state.disabled = True
@@ -92,7 +92,7 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Aquest/a usuari/a no existeix]")
         if nom in l2:
-            especials3 = "Contesta sempre amb 1 paràgrafs.Repeteix la mateixa resposta en àrab."
+            especials3 = "Contesta sempre amb 1 paràgraf de 3 línies.Repeteix la mateixa resposta en àrab."
         if nom in l3:
             especials6="Contesta sempre amb 1 paràgrafs."
         if nom in l4:
