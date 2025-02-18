@@ -272,7 +272,7 @@ if st.session_state.start_chat:
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
-                    if nom in l4:
+                    if nom in l1 or nom in l2:
                         response = client.images.generate(
                             model="dall-e-3",
                             prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
