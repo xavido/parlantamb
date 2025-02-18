@@ -39,7 +39,7 @@ st.set_page_config(page_title="Informe sobre - Parlant Amb Hipatia...Soc filòso
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'bea','mariana']
+l1 = ['xdominguez', 'araluz','celia']
 listcaptions =[]
 listimages = []
 # Disable the submit button after it is clicked
