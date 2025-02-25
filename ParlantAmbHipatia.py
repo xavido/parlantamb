@@ -158,6 +158,7 @@ st.markdown(
     
     .lletralligada {
         font-family: 'Parisienne', cursive;
+        font-size: 20px;
     }
     </style>
     """, 
