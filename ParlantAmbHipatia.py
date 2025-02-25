@@ -152,16 +152,17 @@ st.session_state["font_size"] = font_size
 
 # Aplicamos CSS dinámico
 st.markdown(
-    f"""
+    """
     <style>
-    body {{
-        font-size: {st.session_state["font_size"]};
-    }}
+    @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+    
+    .lletralligada {
+        font-family: 'Parisienne', cursive;
+    }
     </style>
-    """,
+    """, 
     unsafe_allow_html=True
 )
-# Disable the submit button after it is clicked
 
 st.title("Parlant amb...Hipatia")
 st.write("Soc filòsofa, astrònoma i matemàtica.")
@@ -190,6 +191,7 @@ if st.session_state.start_chat:
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
+           
         if "imatge" in prompt.lower() or "dibuix" in prompt.lower()  or "foto" in prompt.lower() or "fotografia" in prompt.lower():
             with st.chat_message("assistant"):
                 response = client.images.generate(
@@ -272,6 +274,7 @@ if st.session_state.start_chat:
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
+                    st.markdown(f'<p class="lletralligada">{resposta}</p>', unsafe_allow_html=True)
                     if nom in l1 or nom in l2:
                         response = client.images.generate(
                             model="dall-e-3",
