@@ -164,7 +164,7 @@ st.markdown(
     .lletraimprenta {
         font-family: 'Roboto';
         font-size: 20px;
-        text-transform: lowercase;
+        text-transform: uppercase;
     }
     </style>
     """, 
