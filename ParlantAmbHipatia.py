@@ -155,10 +155,16 @@ st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     
     .lletralligada {
         font-family: 'Parisienne', cursive;
         font-size: 20px;
+    }
+    .lletraimprenta {
+        font-family: 'Roboto';
+        font-size: 20px;
+        text-transform: lowercase;
     }
     </style>
     """, 
@@ -274,8 +280,10 @@ if st.session_state.start_chat:
                 st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
-                    st.markdown(message.content[0].text.value)
+                    #st.markdown(message.content[0].text.value)
+                    st.markdown(f'<p class="lletraimprenta">{resposta}</p>', unsafe_allow_html=True)
                     st.markdown(f'<p class="lletralligada">{resposta}</p>', unsafe_allow_html=True)
+                    
                     if nom in l1 or nom in l2:
                         response = client.images.generate(
                             model="dall-e-3",
