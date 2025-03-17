@@ -19,7 +19,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 creaName = "-"
 font_size = 12
-lesinstruccions="Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de validar amb la profesora."
+lesinstruccions="Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Contesta com si fos un nen de 5 anys i, si pots, inclou un exemple. Al final sempre indica que la informació l'has de validar amb la profesora."
 #standar alt
 especials=""
 #standar
