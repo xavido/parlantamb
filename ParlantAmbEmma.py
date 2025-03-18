@@ -48,7 +48,7 @@ st.set_page_config(page_title="Parlant amb Emma, historiadora experta en l'Antig
 openai.api_key = st.secrets["auto_pau"]
 
 # standar alt
-l1 = ['xdominguez', 'marta','dylanb','isai]
+l1 = ['xdominguez', 'marta','dylanb','isai']
 # standar
 l2 = ['milan','aya','emanuela','fadilou','daniel','yusra','kevin','zain','javier','ashroop','carla']
 #standar baix
