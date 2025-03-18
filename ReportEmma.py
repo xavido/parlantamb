@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 st.cache_data.clear()
-csv_file_path = 'animals_plantes.csv'
+csv_file_path = 'antiga_roma_cr.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
@@ -35,11 +35,11 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Informe sobre - Parlant amb Audrey : Científica i Ornitòloga ",page_icon="✅",layout="wide")
+st.set_page_config(page_title="Informe sobre - Parlant amb Emma : Historiadora de l'Antiga Roma ",page_icon="✅",layout="wide")
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'bea','mariana']
+l1 = ['xdominguez', 'marta']
 listcaptions =[]
 listimages = []
 # Disable the submit button after it is clicked
@@ -93,7 +93,7 @@ with st.sidebar.form("usuari_form"):
         st.session_state.thread_id = thread.id
 
 
-st.title("Informe - Parlant amb...Audrey")
+st.title("Informe - Parlant amb...Emma")
 
 st.sidebar.button("Sortir de l'Informe",on_click=enable)
 
@@ -111,7 +111,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '2025434343'"
+        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '2025180345'"
         cur.execute(sql)
 
         # Obtiene los resultados de la consulta
