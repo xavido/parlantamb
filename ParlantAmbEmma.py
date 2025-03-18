@@ -52,7 +52,7 @@ l1 = ['xdominguez', 'marta','dylanb','isai']
 # standar
 l2 = ['milan','aya','emanuela','fadilou','daniel','yusra','kevin','zain','javier','ashroop','carla']
 #standar baix
-l3 = ['douae','manseerat','abeera','yurlenis','ainhoa','raifel]
+l3 = ['douae','manseerat','abeera','yurlenis','ainhoa','raifel']
 # standar molt baix
 l4 = ['carlos','dylans','iker']
 # standar molt baix, urdu
