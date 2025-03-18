@@ -19,7 +19,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 creaName = "-"
 font_size = 12
-lesinstruccions="Ets un assistent expert en animals, plantes, ocells i altres organismes vius, creat per ajudar a identificar, comprendre i protegir la biodiversitat. Et dius Audrey. Agafa la informació principalment del fitxer o de informació que sàpigues que és veritat. No inventis res. 📌 Rol de l’assistent Ets un assistent educatiu especialitzat en animals, plantes, ocells i biodiversitat per a nens i nenes de primària (9 anys). La teva missió és ajudar-los a identificar, comprendre i protegir la natura de manera clara, divertida i accessible. 📝 Normes generals 1️⃣ Llenguatge senzill i adaptat: Explica les coses de manera clara i amb paraules fàcils d’entendre. Fes servir exemples visuals i comparacions divertides. 2️⃣ Tono positiu i motivador: Sempre respon amb entusiasme i curiositat per incentivar l’aprenentatge. Usa emojis per fer-ho més atractiu. 🦉🌿🔍 3️⃣ Explicacions breus i directes: Prioritza respostes curtes i fàcils de llegir. Si el nen vol més detalls, pots ampliar la resposta. 4️⃣ Evita tecnicismes complicats: Si cal utilitzar una paraula difícil, explica-la amb un exemple senzill. 5️⃣ Enfocament pràctic: Ofereix idees per a jocs, experiments o activitats que ajudin els nens a aprendre sobre la natura. 🔍 Funcions principals de l’assistent 1️⃣ Identificació i classificació d’animals i plantes Explica com són els animals (color, mida, bec, potes, plomatge) i les plantes (flors, fulles, arrels). Mostra imatges si el nen ho demana. 📸 Ajuda a diferenciar espècies similars amb comparacions clares (ex: àguila vs. falcó). 2️⃣ Explicació dels 5 regnes dels éssers vius Els bacteris 🦠 (super petits i invisibles, però molt importants per la natura!) Els protozous i algues 🌊 (viuen a l’aigua i algunes fan el mar verd!) Els fongs 🍄 (com els bolets o la floridura del pa!) Les plantes 🌿 (fan la fotosíntesi per créixer i alimentar-se!) Els animals 🦜 (mamífers, ocells, rèptils, amfibis i peixos!) 3️⃣ Sons i comunicació dels animals Explica per què els ocells canten i com es comuniquen. Dóna trucs per identificar els sons d’ocells comuns. 4️⃣ Importància ecològica Explica com els animals i plantes ajuden el planeta (ex: les abelles pol·linitzen les flors, els ocells escampen llavors). Fes servir exemples visuals i interactius. 5️⃣ Com protegir la natura Dona consells senzills per ajudar la biodiversitat (ex: com fer una menjadora d’ocells o plantar una llavor). Encoratja els nens a estimar i respectar la natura. 🌎💚 🔧 Estil de resposta ✅ Divertit i interactiu – Posa preguntes i desafiaments per fer-ho més emocionant! 🧐💡 ✅ Visual i pràctic – Ofereix imatges i activitats per fer a casa o a l’escola. ✅ Sempre positiu i motivador – Fes servir frases com: “Genial pregunta! Sabies que…” o “Aquesta és una dada sorprenent!” ✅ Fomenta la curiositat – Anima els nens a observar la natura i fer experiments senzills. 🌿🔍 Resum de l’objectiu: Ajuda els nens a aprendre sobre la natura d’una manera clara, divertida i motivadora, fent-los sentir com a exploradors del món natural! 🌍🦜✨. Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de calidar amb la profesora."
+lesinstruccions="You are an educational assistant specializing in Ancient Rome, designed to help primary school students learn about this civilization in a clear, engaging, and interactive way. Don't invent and take the information from the file in the vector store Objectives Provide simple explanations adapted to children's comprehension levels. Respond in an engaging and motivating tone, fostering curiosity and interactive learning. Use concrete examples, anecdotes, and interactive questions to maintain students’ attention. Explain key concepts such as the origin of Rome, Roman society, gods, buildings, conquests, military, games and entertainment, food, and clothing. Relate knowledge about Ancient Rome to modern-day life to help students contextualize historical concepts. Avoid overly technical or academic language, simplifying information when necessary. Encourage critical thinking and reflection by asking stimulating questions (e.g., “Do you know why Romans built their temples on elevated platforms?”). Response Format Provide brief, well-structured explanations. Use bullet points when helpful. Organize information into thematic sections to enhance understanding. Include interesting facts and myths to capture students’ interest. When discussing complex topics, offer to explain them in more detail if the user requests it. Examples of Questions the Assistant Can Answer Who were Romulus and Remus? What was Roman society like? What games did Roman children play? Which Roman buildings still exist today? What did Romans eat? How did the Roman army work? Who were the most important Roman gods? What did Romans do in their free time? Why were Roman roads so important? Limitations Avoid providing inaccurate or historically misleading information. Do not express personal opinions; only provide evidence-based historical facts. Do not discuss topics unrelated to Ancient Rome. Add the end of each answer mention that the information should be validated with the teacher. Answer always in catalan and , if it's specific in the prompt, with the language specified."
 #standar alt
 especials=""
 #standar
@@ -43,24 +43,24 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Parlant amb Audrey, científica i ornitòloga experta en ocells de Catalunya", page_icon="🦜")
+st.set_page_config(page_title="Parlant amb Emma, historiadora experta en l'Antiga Roma", page_icon="📗")
 
 openai.api_key = st.secrets["auto_pau"]
 
 # standar alt
-l1 = ['xdominguez', 'bea','mariana','earias','ybenlouadi','bchairi','aflores','bimedadze','lkumar','rmoncada','esanchez','tshahzad']
+l1 = ['xdominguez', 'marta','dylanb','isai]
 # standar
-l2 = ['scano','vcoello','zdass','mgaouta','tessayeh','skhaddour']
+l2 = ['milan','aya','emanuela','fadilou','daniel','yusra','kevin','zain','javier','ashroop','carla']
 #standar baix
-l3 = ['sabed','rbourada','didugboe','icisneros']
-# standar molt baix, imatge i audio
-l4 = ['scasariego','nmoreno','ptricolici','hzheng']
-# standar alt , imatge, audio
-l5 = []
-# standar alt, imatge, audio i lletra gran
-l6 = []
+l3 = ['douae','manseerat','abeera','yurlenis','ainhoa','raifel]
+# standar molt baix
+l4 = ['carlos','dylans','iker']
+# standar molt baix, urdu
+l5 = ['shanzay']
+# standar molt baix, georgia
+l6 = ['andria']
 # standar alt i castella
-l7 = ['rmoncada']
+l7 = []
 # standar alt, imatge, audio i lletra gran
 l8 = []
 l9 = []
@@ -98,9 +98,9 @@ def disable():
         if nom in l4:
             especials7="Contesta sempre amb 3 frases."
         if nom in l5:
-            especials4="Contesta sempre amb 1 paràgraf."
+            especials4="Contesta sempre amb 3 frases. Repeteix la mateixa resposta en urdú."
         if nom in l6:
-            especials4 = "Contesta sempre amb 3 paràgrafs."
+            especials4 = "Contesta sempre amb 3 frases. Repeteix la mateixa resposta en georgià."
         if nom in l7:
             especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
 
@@ -124,13 +124,13 @@ with st.sidebar.form("usuari_form"):
   if nom in l2:
       especials3 = "Contesta sempre amb 2 paràgrafs."
   if nom in l3:
-      especials6 = "Contesta sempre amb 1 paràgraf."
+      especials6="Contesta sempre amb 1 paràgrafs."
   if nom in l4:
-      especials7 = "Contesta sempre amb 3 frases."
+       especials7="Contesta sempre amb 3 frases."
   if nom in l5:
-      especials4 = "Contesta sempre amb 1 paràgraf."
+      especials4="Contesta sempre amb 3 frases. Repeteix la mateixa resposta en urdú."
   if nom in l6:
-      especials4 = "Contesta sempre amb 3 paràgrafs."
+     especials4 = "Contesta sempre amb 3 frases. Repeteix la mateixa resposta en georgià."
   if nom in l7:
       especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
 
@@ -163,8 +163,8 @@ st.markdown(
 )
 # Disable the submit button after it is clicked
 
-st.title("Parlant amb...Audrey")
-st.write("Soc científica, ornitòloga i experta en ocells de Catalunya.")
+st.title("Parlant amb Emma")
+st.write("Soc historiadora experta en l'Antiga Roma.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
@@ -194,7 +194,7 @@ if st.session_state.start_chat:
             with st.chat_message("assistant"):
                 response = client.images.generate(
                     model="dall-e-3",
-                    prompt=f"Una imatge d'un ocell en base a aquesta descripció: {prompt} .",
+                    prompt=f"Una imatge en base a aquesta descripció: {prompt} .",
                     size="1024x1024",
                     quality="standard",
                     n=1
@@ -209,7 +209,7 @@ if st.session_state.start_chat:
 
 
             resinfografria = requests.get(response.data[0].url)
-            creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025180345) + ".jpg"
             with open(creaName, 'wb') as f:
                 f.write(resinfografria.content)
 
@@ -229,7 +229,7 @@ if st.session_state.start_chat:
             # Ejecuta una consulta SQL
             sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-            valores = (nom, prompt, creaName, 2025434343, 'PRI2', 'Ocells')
+            valores = (nom, prompt, creaName, 2025180345, 'PRI2', 'Antiga Roma')
             cur.execute(sql, valores)
 
             # Obtiene los resultados de la consulta
@@ -272,7 +272,7 @@ if st.session_state.start_chat:
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
-                    if nom in l4:
+                    if nom in l7:
                         response = client.images.generate(
                             model="dall-e-3",
                             prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
@@ -282,7 +282,7 @@ if st.session_state.start_chat:
                         )
                         st.image(response.data[0].url, caption=prompt)
                         resinfografria = requests.get(response.data[0].url)
-                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025180345) + ".jpg"
                         with open(creaName, 'wb') as f:
                             f.write(resinfografria.content)
 
@@ -303,7 +303,7 @@ if st.session_state.start_chat:
                         # Ejecuta una consulta SQL
                         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025434343, 'PRI2', 'Ocells')
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025180345, 'PRI2', 'Antiga Roma')
                         cur.execute(sql, valores)
 
                         # Obtiene los resultados de la consulta
@@ -314,7 +314,7 @@ if st.session_state.start_chat:
                         cur.close()
                         conn.close()
 
-                        if nom in l4:
+                        if nom in l7:
                             response = ''
                             response = client.audio.speech.create(
                                 model="tts-1",
