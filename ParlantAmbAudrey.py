@@ -272,6 +272,7 @@ if st.session_state.start_chat:
                 with st.chat_message("assistant"):
                     resposta = message.content[0].text.value
                     st.markdown(message.content[0].text.value)
+                    
                     if nom in l4:
                         response = client.images.generate(
                             model="dall-e-3",
@@ -329,6 +330,27 @@ if st.session_state.start_chat:
                             # time.sleep(1)
                             with elaudio.container():
                                 autoplay_audio(nomfitxer)
+                    else:
+                         # Crea una conexión con la base de datos
+                        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+                                                                   password=db_password)
+            
+                        # Crea un cursor para ejecutar comandos SQL
+                        cur = conn.cursor()
+            
+                        # Ejecuta una consulta SQL
+                        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025434343, 'PRI2', 'Ocells')
+                        cur.execute(sql, valores)
+            
+                        # Obtiene los resultados de la consulta
+                        results_database = cur.fetchall()
+                        conn.commit()
+            
+                        # Cierra la conexión con la base de datos
+                        cur.close()
+                        conn.close()
 
 
 else:
