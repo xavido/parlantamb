@@ -209,7 +209,7 @@ if st.session_state.start_chat:
 
 
             resinfografria = requests.get(response.data[0].url)
-            creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025180345) + ".jpg"
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(20251803) + ".jpg"
             with open(creaName, 'wb') as f:
                 f.write(resinfografria.content)
 
@@ -229,7 +229,7 @@ if st.session_state.start_chat:
             # Ejecuta una consulta SQL
             sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-            valores = (nom, prompt, creaName, 2025180345, 'PRI3', 'Antiga Roma')
+            valores = (nom, prompt, creaName, 20251803, 'PRI3', 'Antiga Roma')
             cur.execute(sql, valores)
 
             # Obtiene los resultados de la consulta
@@ -282,7 +282,7 @@ if st.session_state.start_chat:
                         )
                         st.image(response.data[0].url, caption=prompt)
                         resinfografria = requests.get(response.data[0].url)
-                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025180345) + ".jpg"
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(20251803) + ".jpg"
                         with open(creaName, 'wb') as f:
                             f.write(resinfografria.content)
 
@@ -303,7 +303,7 @@ if st.session_state.start_chat:
                         # Ejecuta una consulta SQL
                         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-                        valores = (nom, prompt, message.content[0].text.value, creaName, 2025180345, 'PRI3', 'Antiga Roma')
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 20251803, 'PRI3', 'Antiga Roma')
                         cur.execute(sql, valores)
 
                         # Obtiene los resultados de la consulta
