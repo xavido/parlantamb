@@ -92,7 +92,7 @@ def disable():
         if nom != '':
             st.sidebar.write(":red[Aquest/a usuari/a no existeix]")
         if nom in l2:
-            especials3 = "Contesta sempre amb 1 paràgraf de 3 línies.Repeteix la mateixa resposta en àrab."
+            especials3 = "Contesta sempre amb 2 frases.Repeteix la mateixa resposta en àrab."
         if nom in l3:
             especials6="Contesta sempre amb 1 paràgrafs."
         if nom in l4:
@@ -120,9 +120,9 @@ with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escriu la teva identificació 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
   if nom in l1:
-      especials = "Contesta sempre amb 1 paràgrafs."
+      especials = "Contesta sempre amb 2 frases."
   if nom in l2:
-      especials3 = "Contesta sempre amb 1 paràgrafs.Repeteix la mateixa resposta en àrab."
+      especials3 = "Contesta sempre amb 2 frases.Repeteix la mateixa resposta en àrab."
   if nom in l3:
       especials6 = "Contesta sempre amb 1 paràgraf."
   if nom in l4:
@@ -326,7 +326,34 @@ if st.session_state.start_chat:
                         cur.close()
                         conn.close()
 
-                        if nom in l2:
+                        if nom in l2 or nom in l1:
+                            client.beta.threads.messages.create(
+                                thread_id=st.session_state.thread_id,
+                                role="user",
+                                content="Necessito que m'expliquis com un nen de 5 anys aquesta frase:"+resposta+".Pensa que el nen no té molt de vocabulari".
+                            )
+                
+                            run = client.beta.threads.runs.create(
+                                thread_id=st.session_state.thread_id,
+                                assistant_id=assistant_id,
+                                instructions=""
+                            )
+                
+                            while run.status != 'completed':
+                                #time.sleep(1)
+                                run = client.beta.threads.runs.retrieve(
+                                    thread_id=st.session_state.thread_id,
+                                    run_id=run.id
+                                )
+                            messages = client.beta.threads.messages.list(
+                                thread_id=st.session_state.thread_id
+                            )
+                
+                            # Process and display assistant messages
+                            assistant_messages_for_run = [
+                                message for message in messages
+                                if message.run_id == run.id and message.role == "assistant"
+                            ]
                             response = ''
                             response = client.audio.speech.create(
                                 model="tts-1",
