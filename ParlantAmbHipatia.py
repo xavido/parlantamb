@@ -330,7 +330,7 @@ if st.session_state.start_chat:
                             client.beta.threads.messages.create(
                                 thread_id=st.session_state.thread_id,
                                 role="user",
-                                content="Necessito que m'expliquis com un nen de 5 anys aquesta frase:"+resposta+".Pensa que el nen no té molt de vocabulari".
+                                content="Necessito que m'expliquis com un nen de 5 anys aquesta frase:"+resposta+".Pensa que el nen no té molt de vocabulari"
                             )
                 
                             run = client.beta.threads.runs.create(
