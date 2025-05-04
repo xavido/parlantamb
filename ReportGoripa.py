@@ -93,7 +93,7 @@ with st.sidebar.form("usuari_form"):
         st.session_state.thread_id = thread.id
 
 
-st.title("Informe - Parlant amb...Hipatia")
+st.title("Informe - Parlant amb...Goripa")
 
 st.sidebar.button("Sortir de l'Informe",on_click=enable)
 
