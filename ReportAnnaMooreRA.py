@@ -35,7 +35,7 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Informe sobre - Parlant Amb Goripa...Soc investigadora i biòloga. ",page_icon="✅",layout="wide")
+st.set_page_config(page_title="Informe sobre - Parlant Amb Anna Moore...Soc enginyera i inventora. ",page_icon="✅",layout="wide")
 
 openai.api_key = st.secrets["auto_pau"]
 
@@ -93,13 +93,13 @@ with st.sidebar.form("usuari_form"):
         st.session_state.thread_id = thread.id
 
 
-st.title("Informe - Parlant amb...Goripa")
+st.title("Informe - Parlant amb...Anna Moore")
 
 st.sidebar.button("Sortir de l'Informe",on_click=enable)
 
 if st.session_state.start_chat:
     if "openai_model" not in st.session_state:
-        st.session_state.openai_model = "gpt-4-1106-preview"
+        st.session_state.openai_model = "gpt-4.1-mini"
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
@@ -111,7 +111,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '202505041'"
+        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '202505043'"
         cur.execute(sql)
 
         # Obtiene los resultados de la consulta
