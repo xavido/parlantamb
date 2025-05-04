@@ -16,7 +16,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 creaName = "-"
 
-lesinstruccions="Et dius una dona i et dius Felipa . Ets un assistent experta dissenyada per ajudar estudiants de primària a aprendre sobre tres temes principals: 1. **Castells Medievals**: Ets un expert en la història, arquitectura i funció dels castells medievals. Coneixes les característiques arquitectòniques, els elements defensius, la simbologia del poder associada a aquests castells, i les seves funcions en la societat medieval. Pots explicar de manera clara com estaven construïts i la seva relació amb la vida dels nobles i els camperols. 2. **Ús Històric de la Sal**: Ets expert en l'ús de la sal al llarg de la història, especialment en les civilitzacions antigues i medievals. Coneixes el seu paper en la conservació d'aliments, el comerç i la seva importància cultural i simbòlica. Pots explicar els diferents tipus de sal, com la sal marina, les mines de sal, i la relació de la sal amb els salaris. 3. **Comerç i Economia Medievals i Antigues**: Ets expert en l'economia medieval i antiga, amb un enfocament en el comerç de la sal. Coneixes la importància de la sal com a bé comercial, el seu paper en la creació de vies comercials com la Via Salaria romana, i la seva relació amb el concepte de salari. Pots explicar els impactes econòmics i socials de la sal en aquestes èpoques. Només has de respondre a preguntes relacionades amb aquests temes. Si una pregunta no pertany a aquests àmbits, informa a l'usuari que no tens informació sobre aquest tema o que no pots respondre. Mantingues les respostes centrades en la informació dels documents adjunts i en el teu coneixement dins d'aquestes àrees. Quan interactuïs amb els estudiants, utilitza un llenguatge clar i senzill, adequat per a nens de primària. Ofereix respostes concises i fàcils de comprendre, utilitzant exemples visuals quan sigui necessari. Evita utilitzar terminologia massa tècnica i ajuda els estudiants a relacionar els conceptes amb la seva vida quotidiana. Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de calidar amb la profesora."
+lesinstruccions="Ets una dona i Et dius Elisenda. Ets una assistent educativa que ajuda nens i nenes de primària a aprendre sobre l’Edat Moderna. Utilitzes només la informació continguda en el document proporcionat. No inventis informació ni afegeixis coneixements que no apareguin al text. Expressa’t en català, amb un to amable, clar, proper i respectuós, adaptat al nivell de comprensió dels infants. Respon a preguntes sobre personatges històrics, invents, descobriments, la ciència, l’art, les cultures precolombines, el comerç i altres aspectes relacionats amb l’Edat Moderna. Si una pregunta no es pot respondre amb el contingut del document, digues-ho amb naturalitat i recomana que ho preguntin al/la mestre/a. Objectius: Donar informació clara i atractiva per a infants. Transmetre curiositat per la història, la ciència i l’art. Encoratjar preguntes i reflexió sense jutjar ni moralitzar. Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de calidar amb la profesora."
 #standar alt
 especials=""
 #standar
@@ -40,7 +40,7 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Parlant amb Felipa, científica i experta en castells medievals, l'ús històric de la sal i el comerç i l'economia medievals", page_icon=":speech_balloon:")
+st.set_page_config(page_title="Parlant amb Elisenda, historiadora experta en Edat Moderna.", page_icon=":speech_balloon:")
 
 openai.api_key = st.secrets["auto_pau"]
 
@@ -139,8 +139,8 @@ with st.sidebar.form("usuari_form"):
         st.session_state.thread_id = thread.id
 
 
-st.title("Parlant amb...Felipa")
-st.write("Soc científica i experta en castells medievals, l'ús històric de la sal i el comerç i l'economia medievals.")
+st.title("Parlant amb...Elisenda")
+st.write("Soc historiadora experta en Edat Moderna.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
@@ -205,7 +205,7 @@ if st.session_state.start_chat:
                     )
                     st.image(response.data[0].url, caption=prompt)
                     resinfografria = requests.get(response.data[0].url)
-                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
+                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
                     with open(creaName, 'wb') as f:
                         f.write(resinfografria.content)
 
@@ -230,7 +230,7 @@ if st.session_state.start_chat:
         # Ejecuta una consulta SQL
         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 202500,'PRI2','Castells i Sal')
+        valores = (nom, prompt, message.content[0].text.value, creaName, 202505031,'PRI3','Edat Moderna')
         cur.execute(sql, valores)
 
         # Obtiene los resultados de la consulta
@@ -305,7 +305,7 @@ if st.session_state.start_chat:
                     )
                     st.image(response.data[0].url, caption=prompt)
                     resinfografria = requests.get(response.data[0].url)
-                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202500) + ".jpg"
+                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
                     with open(creaName, 'wb') as f:
                         f.write(resinfografria.content)
 
@@ -334,7 +334,7 @@ if st.session_state.start_chat:
         # Ejecuta una consulta SQL
         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 202500,'PRI2','Castells i Sal')
+        valores = (nom, prompt, message.content[0].text.value, creaName, 202505031,'PRI3','Edat Moderna')
         cur.execute(sql, valores)
 
         # Obtiene los resultados de la consulta
