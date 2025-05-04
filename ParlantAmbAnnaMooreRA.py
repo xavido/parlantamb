@@ -19,7 +19,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 
 creaName = "-"
 font_size = 12
-lesinstruccions="Et dius Goripa. Ets un assistent educatiu amable i clar que respon preguntes de nens i nenes de primària sobre temes relacionats amb la sexualitat humana. Les teves respostes sempre s'han de basar exclusivament en el contingut del document proporcionat, que conté informació clara i adaptada a l'etapa evolutiva dels infants. Parla en català d’una manera respectuosa, tranquil·la i entenedora, amb un to proper però no infantilitzat. No facis suposicions ni donis informació que no aparegui al document. Si una pregunta no pot ser contestada amb la informació disponible, respon de manera breu que no tens prou informació per respondre i recomana parlar amb un adult de confiança com una mestra, un pare/mare o un professional de la salut. Respon en català sempre i si a la pregunta et demano un altre idioma, repeteix la mateixa resposta en l'altre idioma. Objectius principals: Oferir respostes precises i respectuoses. Fer que els infants se sentin segurs i escoltats. Evitar qualsevol valoració personal o opinió. No afegir informació externa ni inventada. Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de validar amb la profesora."
+lesinstruccions="Et dius Anna Moore. Ets un assistent educatiu dissenyat per respondre preguntes de nens i nenes de primària sobre les màquines, les forces i les màquines simples. Utilitza només la informació continguda en el document proporcionat. No inventis informació, no facis suposicions i no afegeixis coneixements externs. Expressa’t en català, amb un to proper, clar i respectuós, adaptat al nivell de comprensió dels infants. Si una pregunta no es pot respondre amb el contingut disponible, indica-ho amablement i recomana demanar ajuda a un mestre o una persona adulta de confiança. Objectius principals: Fer les explicacions entenedores, visuals i tranquil·les. Respondre amb exemples senzills quan sigui possible. No sortir del contingut del document. Fomentar la curiositat i el respecte per la ciència i la tecnologia. No facis suposicions ni donis informació que no aparegui al document. Respon en català sempre i si a la pregunta et demano un altre idioma, repeteix la mateixa resposta en l'altre idioma. Objectius principals: Oferir respostes precises i respectuoses. Fer que els infants se sentin segurs i escoltats. Evitar qualsevol valoració personal o opinió. No afegir informació externa ni inventada. Contesta sempre en català i si al prompt de la pregunta especifico un altre idioma contesta en català i la mateixa resposta en l'idioma del prompt. Al final sempre indica que la informació l'has de validar amb la profesora."
 #standar alt
 especials=""
 #standar
@@ -43,7 +43,7 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Parlant amb Goripa, investigadora i biòloga", page_icon="🦜")
+st.set_page_config(page_title="Parlant amb Anna Moore, inventora i experta en màquines simples", page_icon="🦜")
 
 openai.api_key = st.secrets["auto_pau"]
 
@@ -163,8 +163,8 @@ st.markdown(
 )
 # Disable the submit button after it is clicked
 
-st.title("Parlant amb...Goripa")
-st.write("Soc biòloga i investigadora.")
+st.title("Parlant amb...Anna Moore")
+st.write("Soc enginyera i inventora.")
 
 st.sidebar.button("Sortir del Xat",on_click=enable)
 
@@ -209,7 +209,7 @@ if st.session_state.start_chat:
 
 
             resinfografria = requests.get(response.data[0].url)
-            creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505041) + ".jpg"
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505043) + ".jpg"
             with open(creaName, 'wb') as f:
                 f.write(resinfografria.content)
 
@@ -229,7 +229,7 @@ if st.session_state.start_chat:
             # Ejecuta una consulta SQL
             sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-            valores = (nom, prompt, creaName, 202505041, 'PRI3', 'Sexualitat')
+            valores = (nom, prompt, creaName, 202505043, 'PRI3', 'Maquines')
             cur.execute(sql, valores)
 
             # Obtiene los resultados de la consulta
@@ -282,7 +282,7 @@ if st.session_state.start_chat:
                     # Ejecuta una consulta SQL
                     sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             
-                    valores = (nom, prompt, message.content[0].text.value, creaName, 202505041, 'PRI3', 'Sexualitat')
+                    valores = (nom, prompt, message.content[0].text.value, creaName, 202505043, 'PRI3', 'Maquines')
                     cur.execute(sql, valores)
             
                     # Obtiene los resultados de la consulta
@@ -302,7 +302,7 @@ if st.session_state.start_chat:
                         )
                         st.image(response.data[0].url, caption=prompt)
                         resinfografria = requests.get(response.data[0].url)
-                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505041) + ".jpg"
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505043) + ".jpg"
                         with open(creaName, 'wb') as f:
                             f.write(resinfografria.content)
 
@@ -323,7 +323,7 @@ if st.session_state.start_chat:
                         # Ejecuta una consulta SQL
                         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-                        valores = (nom, prompt, message.content[0].text.value, creaName, 202505041, 'PRI3', 'Sexualitat')
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 202505043, 'PRI3', 'Maquines')
                         cur.execute(sql, valores)
 
                         # Obtiene los resultados de la consulta
