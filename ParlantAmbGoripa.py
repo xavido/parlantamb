@@ -209,7 +209,7 @@ if st.session_state.start_chat:
 
 
             resinfografria = requests.get(response.data[0].url)
-            creaName = str(nom) + "_" + str(time.time()) + "_" + str(2025434343) + ".jpg"
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505041) + ".jpg"
             with open(creaName, 'wb') as f:
                 f.write(resinfografria.content)
 
