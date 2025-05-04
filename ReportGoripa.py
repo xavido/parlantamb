@@ -35,11 +35,11 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Informe sobre - Parlant Amb Hipatia...Soc filòsofa, astrònoma i matemàtica. ",page_icon="✅",layout="wide")
+st.set_page_config(page_title="Informe sobre - Parlant Amb Goripa...Soc investigadora i biòloga. ",page_icon="✅",layout="wide")
 
 openai.api_key = st.secrets["auto_pau"]
 
-l1 = ['xdominguez', 'araluz','celia']
+l1 = ['xdominguez', 'irene']
 listcaptions =[]
 listimages = []
 # Disable the submit button after it is clicked
@@ -111,7 +111,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '2025632632'"
+        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '202505041'"
         cur.execute(sql)
 
         # Obtiene los resultados de la consulta
