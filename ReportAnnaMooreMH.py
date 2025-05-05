@@ -23,7 +23,7 @@ db_password =  st.secrets["DB_PASSWORD"]
 client = openai
 count = 0
 st.cache_data.clear()
-csv_file_path = 'jules_verne.csv'
+csv_file_path = 'maquines_mh.csv'
 
 if os.path.exists(csv_file_path):
   os.remove(csv_file_path)
@@ -35,7 +35,7 @@ if "start_chat" not in st.session_state:
 if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
-st.set_page_config(page_title="Informe sobre - Parlant amb FLorence : Geologia i la Terra ",page_icon="✅",layout="wide")
+st.set_page_config(page_title="Informe sobre - Parlant amb Anna Moore : Màquines Simples ",page_icon="✅",layout="wide")
 
 openai.api_key = st.secrets["auto_pau"]
 
@@ -99,7 +99,7 @@ st.sidebar.button("Sortir de l'Informe",on_click=enable)
 
 if st.session_state.start_chat:
     if "openai_model" not in st.session_state:
-        st.session_state.openai_model = "gpt-4-1106-preview"
+        st.session_state.openai_model = "gpt-4.1-mini"
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
@@ -111,7 +111,7 @@ if st.session_state.start_chat:
         cur = conn.cursor()
 
         # Ejecuta una consulta SQL
-        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '20250056'"
+        sql = "SELECT * FROM teclaPREGUNTES WHERE tema = '202505056'"
         cur.execute(sql)
 
         # Obtiene los resultados de la consulta
