@@ -48,23 +48,22 @@ st.set_page_config(page_title="Parlant amb Anna Moore, inventora i experta en m�
 openai.api_key = st.secrets["auto_pau"]
 
 # standar alt
-l1 = ['xdominguez', 'irene','souhail','yulia','maria','manuel','usman','salma','ahmed','carmen','haidar','samantha','britanny','mohamed']
-# standar
-l2 = ['izan','jabel','emily','jasmeet','david','diego']
-#standar baix
-l3 = ['anam']
-# standar molt baix i urdú 
-l4 = ['alyan']
-# standar alt , imatge, audio
-l5 = []
+l1 = ['xdominguez', 'ainoa','daniel','ibendahman','kbenfatina','mdahoud','inouali','llopez','amesbah','mmuñoz','atrelles']
+# standar i imatge
+l2 = ['aiqbal']
+#standar i audio
+l3 = ['sbolaños']
+# standar imatge i audio
+l4 = ['akamran','imubeen','anavarro']
+# standar baix, imatge, audio
+l5 = ['dhossain','amuneeb','fmuneeb','zmuneeb','azhaira','hrasool']
 # standar alt, imatge, audio i lletra gran
-l6 = []
-# standar alt i castella
-l7 = ['rmoncada']
+l6 = ['aallouche']
+# standar molt baix, imatge, audio i arab magrabí
+l7 = ['maghattass']
 # standar alt, imatge, audio i lletra gran
 l8 = []
 l9 = []
-
 
 def autoplay_audio(file_path: str):
     with open(file_path, "rb") as f:
@@ -89,20 +88,20 @@ def disable():
         thread = client.beta.threads.create()
         st.session_state.thread_id = thread.id
     else:
-        if nom != '':
+       if nom != '':
             st.sidebar.write(":red[Aquest/a usuari/a no existeix]")
         if nom in l2:
             especials3 = "Contesta sempre amb 2 paràgrafs."
         if nom in l3:
-            especials6="Contesta sempre amb 1 paràgrafs."
+            especials6="Contesta sempre amb 2 paràgrafs."
         if nom in l4:
-            especials7="Contesta sempre amb 3 frases.Repeteix la mateixa resposta en urdú"
+            especials7="Contesta sempre amb 2 paràgrafs."
         if nom in l5:
             especials4="Contesta sempre amb 1 paràgraf."
         if nom in l6:
             especials4 = "Contesta sempre amb 3 paràgrafs."
         if nom in l7:
-            especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
+            especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
 
 def enable():
     if "disabled" in st.session_state and st.session_state.disabled == True:
@@ -119,20 +118,20 @@ if "disabled" not in st.session_state:
 with st.sidebar.form("usuari_form"):
   nom = st.text_input("Escriu la teva identificació 👇",disabled=st.session_state.disabled, key=1)
   submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
-  if nom in l1:
+ if nom in l1:
       especials = "Contesta sempre amb 3 paràgrafs."
   if nom in l2:
       especials3 = "Contesta sempre amb 2 paràgrafs."
   if nom in l3:
-      especials6="Contesta sempre amb 1 paràgrafs."
+      especials6 = "Contesta sempre amb 2 paràgrafs."
   if nom in l4:
-      especials7="Contesta sempre amb 3 frases.Repeteix la mateixa resposta en urdú"
+      especials7 = "Contesta sempre amb 2 paràgrafs."
   if nom in l5:
       especials4 = "Contesta sempre amb 1 paràgraf."
   if nom in l6:
       especials4 = "Contesta sempre amb 3 paràgrafs."
   if nom in l7:
-      especials5 = "Contesta sempre amb 3 paràgrafs. Repeteix la mateixa resposta en castellà."
+      especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
 
   if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
         st.session_state.disabled = True
@@ -229,7 +228,7 @@ if st.session_state.start_chat:
             # Ejecuta una consulta SQL
             sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-            valores = (nom, prompt, creaName, 202505043, 'PRI3', 'Maquines')
+            valores = (nom, prompt, creaName, 202505056, 'PRI2', 'Maquines')
             cur.execute(sql, valores)
 
             # Obtiene los resultados de la consulta
@@ -282,7 +281,7 @@ if st.session_state.start_chat:
                     # Ejecuta una consulta SQL
                     sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             
-                    valores = (nom, prompt, message.content[0].text.value, creaName, 202505043, 'PRI3', 'Maquines')
+                    valores = (nom, prompt, message.content[0].text.value, creaName, 202505056, 'PRI2', 'Maquines')
                     cur.execute(sql, valores)
             
                     # Obtiene los resultados de la consulta
@@ -302,7 +301,7 @@ if st.session_state.start_chat:
                         )
                         st.image(response.data[0].url, caption=prompt)
                         resinfografria = requests.get(response.data[0].url)
-                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505043) + ".jpg"
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505056) + ".jpg"
                         with open(creaName, 'wb') as f:
                             f.write(resinfografria.content)
 
@@ -323,7 +322,7 @@ if st.session_state.start_chat:
                         # Ejecuta una consulta SQL
                         sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
-                        valores = (nom, prompt, message.content[0].text.value, creaName, 202505043, 'PRI3', 'Maquines')
+                        valores = (nom, prompt, message.content[0].text.value, creaName, 202505056, 'PRI2', 'Maquines')
                         cur.execute(sql, valores)
 
                         # Obtiene los resultados de la consulta
