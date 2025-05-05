@@ -90,17 +90,17 @@ def disable():
     else:
        if nom != '':
             st.sidebar.write(":red[Aquest/a usuari/a no existeix]")
-        if nom in l2:
+       if nom in l2:
             especials3 = "Contesta sempre amb 2 paràgrafs."
-        if nom in l3:
+       if nom in l3:
             especials6="Contesta sempre amb 2 paràgrafs."
-        if nom in l4:
+       if nom in l4:
             especials7="Contesta sempre amb 2 paràgrafs."
-        if nom in l5:
+       if nom in l5:
             especials4="Contesta sempre amb 1 paràgraf."
-        if nom in l6:
+       if nom in l6:
             especials4 = "Contesta sempre amb 3 paràgrafs."
-        if nom in l7:
+       if nom in l7:
             especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
 
 def enable():
@@ -120,25 +120,25 @@ with st.sidebar.form("usuari_form"):
   submit_button = st.form_submit_button(label="Iniciar Xat",disabled=st.session_state.disabled, on_click=disable)
  if nom in l1:
       especials = "Contesta sempre amb 3 paràgrafs."
-  if nom in l2:
+ if nom in l2:
       especials3 = "Contesta sempre amb 2 paràgrafs."
-  if nom in l3:
+ if nom in l3:
       especials6 = "Contesta sempre amb 2 paràgrafs."
-  if nom in l4:
+ if nom in l4:
       especials7 = "Contesta sempre amb 2 paràgrafs."
-  if nom in l5:
+ if nom in l5:
       especials4 = "Contesta sempre amb 1 paràgraf."
-  if nom in l6:
+ if nom in l6:
       especials4 = "Contesta sempre amb 3 paràgrafs."
-  if nom in l7:
+ if nom in l7:
       especials5 = "Contesta sempre amb un màxim de 3 frases. Repeteix la mateixa resposta amb àrab magrabí."
 
-  if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
-        st.session_state.disabled = True
-        st.session_state.start_chat = True
-        st.session_state.disabled = True
-        thread = client.beta.threads.create()
-        st.session_state.thread_id = thread.id
+ if submit_button and nom != '' and ( nom in l1 or nom in l2 or nom in l3 or nom in l4 or nom in l5 or nom in l6 or nom in l7):
+      st.session_state.disabled = True
+      st.session_state.start_chat = True
+      st.session_state.disabled = True
+      thread = client.beta.threads.create()
+      st.session_state.thread_id = thread.id
 
 # Simulamos que cada usuario tiene un tamaño de letra guardado
 if "font_size" not in st.session_state:
