@@ -160,86 +160,135 @@ if st.session_state.start_chat:
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
-
-        client.beta.threads.messages.create(
-            thread_id=st.session_state.thread_id,
-            role="user",
-            #content=prompt + especials9
-            content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
-        )
-
-        run = client.beta.threads.runs.create(
-            thread_id=st.session_state.thread_id,
-            assistant_id=assistant_id,
-            instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7
-            #instructions=lesinstruccions + especials9
-        )
-
-        while run.status != 'completed':
-            #time.sleep(1)
-            run = client.beta.threads.runs.retrieve(
-                thread_id=st.session_state.thread_id,
-                run_id=run.id
-            )
-        messages = client.beta.threads.messages.list(
-            thread_id=st.session_state.thread_id
-        )
-
-        # Process and display assistant messages
-        assistant_messages_for_run = [
-            message for message in messages
-            if message.run_id == run.id and message.role == "assistant"
-        ]
-        for message in assistant_messages_for_run:
-            st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
+         if "imatge" in prompt.lower() or "dibuix" in prompt.lower()  or "foto" in prompt.lower() or "fotografia" in prompt.lower():
             with st.chat_message("assistant"):
-                resposta = message.content[0].text.value
-                st.markdown(message.content[0].text.value)
-                if nom in l3 or nom in l1 or nom in l4 or nom in l5 or nom in l6 or nom in l7 or nom in l1 or nom in l2:
-                    response = client.images.generate(
-                        model="dall-e-3",
-                        prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
-                        size="1024x1024",
-                        quality="standard",
-                        n=1
-                    )
-                    st.image(response.data[0].url, caption=prompt)
-                    resinfografria = requests.get(response.data[0].url)
-                    creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
-                    with open(creaName, 'wb') as f:
-                        f.write(resinfografria.content)
+                response = client.images.generate(
+                    model="dall-e-3",
+                    prompt=f"Una imatge sempre amb fons negre i en base a aquesta descripció: {prompt} .",
+                    size="1024x1024",
+                    quality="standard",
+                    n=1
+                )
+                # Desa la imatge a la sessió amb un format compatible
+                image_data = requests.get(response.data[0].url)
+                img = Image.open(BytesIO(image_data.content))
 
-                    ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-                    file = open(creaName, 'rb')  # file to send
-                    # Read file in binary mode
-                    ftp_server.storbinary('STOR ' + creaName, file)
-                    ftp_server.quit()
-                    file.close()  # close file and FTP
+                #st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
+                st.session_state["messages"].append({"role": "assistant", "content": response.data[0].url, "type": "image"})
+                st.image(response.data[0].url, caption=prompt)
 
 
-                # if (resposta.find('sociedad')):
-                #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+            resinfografria = requests.get(response.data[0].url)
+            creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
+            with open(creaName, 'wb') as f:
+                f.write(resinfografria.content)
 
-        # Crea una conexión con la base de datos
-        conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
-                                       password=db_password)
+            ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+            file = open(creaName, 'rb')  # file to send
+            # Read file in binary mode
+            ftp_server.storbinary('STOR ' + creaName, file)
+            ftp_server.quit()
+            file.close()  # close file and FTP
+            # Crea una conexión con la base de datos
+            conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+                                           password=db_password)
 
-        # Crea un cursor para ejecutar comandos SQL
-        cur = conn.cursor()
+            # Crea un cursor para ejecutar comandos SQL
+            cur = conn.cursor()
 
-        # Ejecuta una consulta SQL
-        sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            # Ejecuta una consulta SQL
+            sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
 
-        valores = (nom, prompt, message.content[0].text.value, creaName, 202505031,'PRI3','Edat Moderna')
-        cur.execute(sql, valores)
+            valores = (nom, prompt, creaName, 202505031, 'PRI3', 'Edat Moderna')
+            cur.execute(sql, valores)
 
-        # Obtiene los resultados de la consulta
-        results_database = cur.fetchall()
-        conn.commit()
+            # Obtiene los resultados de la consulta
+            results_database = cur.fetchall()
+            conn.commit()
 
-        # Cierra la conexión con la base de datos
-        cur.close()
-        conn.close()
+            # Cierra la conexión con la base de datos
+            cur.close()
+            conn.close()
+        else:
+            client.beta.threads.messages.create(
+                thread_id=st.session_state.thread_id,
+                role="user",
+                #content=prompt + especials9
+                content=prompt + especials + especials3 + especials4 + especials5 + especials6 + especials7
+            )
+    
+            run = client.beta.threads.runs.create(
+                thread_id=st.session_state.thread_id,
+                assistant_id=assistant_id,
+                instructions=lesinstruccions + especials + especials3 + especials4 + especials5 + especials6 + especials7
+                #instructions=lesinstruccions + especials9
+            )
+    
+            while run.status != 'completed':
+                #time.sleep(1)
+                run = client.beta.threads.runs.retrieve(
+                    thread_id=st.session_state.thread_id,
+                    run_id=run.id
+                )
+            messages = client.beta.threads.messages.list(
+                thread_id=st.session_state.thread_id
+            )
+    
+            # Process and display assistant messages
+            assistant_messages_for_run = [
+                message for message in messages
+                if message.run_id == run.id and message.role == "assistant"
+            ]
+            for message in assistant_messages_for_run:
+                st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
+                with st.chat_message("assistant"):
+                    resposta = message.content[0].text.value
+                    st.markdown(message.content[0].text.value)
+                    if nom in l3 or nom in l1 or nom in l4 or nom in l5 or nom in l6 or nom in l7 or nom in l1 or nom in l2:
+                        response = client.images.generate(
+                            model="dall-e-3",
+                            prompt="Haz una imagen realista a partir de esta descripción y sin saltarse los filtros éticos:" + resposta + ".",
+                            size="1024x1024",
+                            quality="standard",
+                            n=1
+                        )
+                        st.image(response.data[0].url, caption=prompt)
+                        resinfografria = requests.get(response.data[0].url)
+                        creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
+                        with open(creaName, 'wb') as f:
+                            f.write(resinfografria.content)
+    
+                        ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
+                        file = open(creaName, 'rb')  # file to send
+                        # Read file in binary mode
+                        ftp_server.storbinary('STOR ' + creaName, file)
+                        ftp_server.quit()
+                        file.close()  # close file and FTP
+    
+    
+                    # if (resposta.find('sociedad')):
+                    #    st.image('https://xavidominguez.com/tecla/piramide.png', caption='Pirámide de la organización de la sociedad')
+    
+            # Crea una conexión con la base de datos
+            conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
+                                           password=db_password)
+    
+            # Crea un cursor para ejecutar comandos SQL
+            cur = conn.cursor()
+    
+            # Ejecuta una consulta SQL
+            sql = "INSERT INTO teclaPREGUNTES (idc,pregunta, resposta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+    
+            valores = (nom, prompt, message.content[0].text.value, creaName, 202505031,'PRI3','Edat Moderna')
+            cur.execute(sql, valores)
+    
+            # Obtiene los resultados de la consulta
+            results_database = cur.fetchall()
+            conn.commit()
+    
+            # Cierra la conexión con la base de datos
+            cur.close()
+            conn.close()
 
         if nom in l3 or nom in l5 or nom in l7:
             response = ''
