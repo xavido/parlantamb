@@ -6,6 +6,8 @@ import base64
 import requests
 import ftplib
 from streamlit_mic_recorder import mic_recorder,speech_to_text
+from PIL import Image
+from io import BytesIO
 
 assistant_id = st.secrets["OPENAI_ASSISTANT"]
 db_host = st.secrets["DB_HOST"]
