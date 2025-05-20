@@ -172,7 +172,7 @@ if st.session_state.start_chat:
             with st.chat_message("assistant"):
                 response = client.images.generate(
                     model="dall-e-3",
-                    prompt=f"Una imatge amb fons negre d'un personatge amb aquesta descripció: {prompt} .",
+                    prompt=f"Fes una imatge a partir d'aquesta descripció aquesta descripció: {prompt} ,black background.",
                     size="1024x1024",
                     quality="standard",
                     n=1
