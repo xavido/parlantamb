@@ -160,56 +160,6 @@ if st.session_state.start_chat:
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
-         if "imatge" in prompt.lower() or "dibuix" in prompt.lower()  or "foto" in prompt.lower() or "fotografia" in prompt.lower():
-            with st.chat_message("assistant"):
-                response = client.images.generate(
-                    model="dall-e-3",
-                    prompt=f"Una imatge sempre amb fons negre i en base a aquesta descripció: {prompt} .",
-                    size="1024x1024",
-                    quality="standard",
-                    n=1
-                )
-                # Desa la imatge a la sessió amb un format compatible
-                image_data = requests.get(response.data[0].url)
-                img = Image.open(BytesIO(image_data.content))
-
-                #st.session_state["messages"].append({"role": "assistant", "content": img, "type": "image"})
-                st.session_state["messages"].append({"role": "assistant", "content": response.data[0].url, "type": "image"})
-                st.image(response.data[0].url, caption=prompt)
-
-
-            resinfografria = requests.get(response.data[0].url)
-            creaName = str(nom) + "_" + str(time.time()) + "_" + str(202505031) + ".jpg"
-            with open(creaName, 'wb') as f:
-                f.write(resinfografria.content)
-
-            ftp_server = ftplib.FTP(st.secrets["PA_FTP"], st.secrets["PA_FTPUSER"], st.secrets["PA_COD"])
-            file = open(creaName, 'rb')  # file to send
-            # Read file in binary mode
-            ftp_server.storbinary('STOR ' + creaName, file)
-            ftp_server.quit()
-            file.close()  # close file and FTP
-            # Crea una conexión con la base de datos
-            conn = mysql.connector.connect(host=db_host, port=db_port, database=db_name, user=db_user,
-                                           password=db_password)
-
-            # Crea un cursor para ejecutar comandos SQL
-            cur = conn.cursor()
-
-            # Ejecuta una consulta SQL
-            sql = "INSERT INTO teclaPREGUNTES (idc,pregunta,infografia,tema,curso,topico) VALUES (%s,%s,%s,%s,%s,%s)"
-
-            valores = (nom, prompt, creaName, 202505031, 'PRI3', 'Edat Moderna')
-            cur.execute(sql, valores)
-
-            # Obtiene los resultados de la consulta
-            results_database = cur.fetchall()
-            conn.commit()
-
-            # Cierra la conexión con la base de datos
-            cur.close()
-            conn.close()
-        else:
             client.beta.threads.messages.create(
                 thread_id=st.session_state.thread_id,
                 role="user",
